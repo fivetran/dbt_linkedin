@@ -1,0 +1,13 @@
+version: 2
+
+models:
+
+  - name: linkedin__ad_adapter
+    columns:
+      - name: daily_creative_id
+        tests:
+          - unique
+          - not_null
+      - name: creative_id
+        tests:
+          - not_null
