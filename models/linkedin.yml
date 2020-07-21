@@ -11,3 +11,12 @@ models:
       - name: creative_id
         tests:
           - not_null
+      - name: campaign_name
+        tests:
+          - not_null
+      - name: campaign_group_name
+        tests:
+          - not_null
+      - name: account_name
+        tests:
+          - not_null

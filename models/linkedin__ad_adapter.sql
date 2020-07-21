@@ -29,30 +29,27 @@ with metrics as (
         metrics.*,
         campaigns.campaign_name,
         campaigns.campaign_id,
-        campaigns.campaign_version_id,
         campaign_groups.campaign_group_name,
         campaign_groups.campaign_group_id,
-        campaign_groups.campaign_group_version_id,
         accounts.account_name,
-        accounts.account_id,
-        accounts.account_version_id
+        accounts.account_id
     from metrics
     left join creatives
         on metrics.creative_id = creatives.creative_id
-        and metrics.date_day >= creatives.valid_from
-        and metrics.date_day <= coalesce(creatives.valid_to, current_timestamp)
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= creatives.valid_from
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(creatives.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
     left join campaigns
         on creatives.campaign_id = campaigns.campaign_id
-        and metrics.date_day >= campaigns.valid_from
-        and metrics.date_day <= coalesce(campaigns.valid_to, current_timestamp)
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= campaigns.valid_from
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(campaigns.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
     left join campaign_groups
         on campaigns.campaign_group_id = campaign_groups.campaign_group_id
-        and metrics.date_day >= campaign_groups.valid_from
-        and metrics.date_day <= coalesce(campaign_groups.valid_to, current_timestamp)
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= campaign_groups.valid_from
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(campaign_groups.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
     left join accounts
         on campaign_groups.account_id = accounts.account_id
-        and metrics.date_day >= accounts.valid_from
-        and metrics.date_day <= coalesce(accounts.valid_to, current_timestamp)
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= accounts.valid_from
+        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(accounts.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
 
 )
 
