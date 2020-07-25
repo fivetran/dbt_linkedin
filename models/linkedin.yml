@@ -3,20 +3,168 @@ version: 2
 models:
 
   - name: linkedin__ad_adapter
+    description: Each record in this table represents the daily performance of ads at the creative level.
     columns:
       - name: daily_creative_id
+        description: A unique key, a combination of creative_id and date_day.
         tests:
           - unique
           - not_null
+
       - name: creative_id
+        description: The ID of the related creative.
         tests:
           - not_null
+
       - name: campaign_name
+        description: A label for the campaign.
         tests:
           - not_null
+
       - name: campaign_group_name
+        description: A label for the campaign group.
         tests:
           - not_null
+
       - name: account_name
+        description: A label for the account.
         tests:
           - not_null
+
+      - name: campaign_id
+        description: Unique internal ID representing the campaign.
+
+      - name: campaign_group_id
+        description: Unique internal ID representing the campaign group.
+
+      - name: account_id
+        description: Unique internal ID representing the account.
+
+      - name: date_day
+        description: The day of the activity.
+
+      - name: clicks
+        description: The count of chargeable clicks.
+
+      - name: impressions
+        description: This is the count of "impressions" for Direct Ads and Sponsored Updates and "sends" for InMails.
+
+      - name: cost
+        description: The cost of the ads in the local currency or USD.
+
+      - name: base_url
+        description: The base URL of the ad, extracted from the `click_uri`.
+
+      - name: url_host
+        description: The URL host of the ad, extracted from the `click_uri`.
+
+      - name: url_path
+        description: The URL path of the ad, extracted from the `click_uri`.
+
+      - name: utm_source
+        description: The utm_source parameter of the ad, extracted from the `click_uri`.
+
+      - name: utm_medium
+        description: The utm_medium parameter of the ad, extracted from the `click_uri`.
+
+      - name: utm_campaign
+        description: The utm_campaign parameter of the ad, extracted from the `click_uri`.
+
+      - name: utm_content
+        description: The utm_content parameter of the ad, extracted from the `click_uri`.
+
+      - name: utm_term
+        description: The utm_term parameter of the ad, extracted from the `click_uri`.
+
+  - name: linkedin__account_ad_report
+    description: Each record in this table represents the daily performance of ads at the account level.
+    columns:
+      - name: account_name
+        description: A label for the account.
+        tests:
+          - not_null
+
+      - name: account_id
+        description: Unique internal ID representing the account.
+
+      - name: date_day
+        description: The day of the activity.
+
+      - name: clicks
+        description: The count of chargeable clicks.
+
+      - name: impressions
+        description: This is the count of "impressions" for Direct Ads and Sponsored Updates and "sends" for InMails.
+
+      - name: cost
+        description: The cost of the ads in the local currency or USD.
+
+  - name: linkedin__campaign_ad_report
+    description: Each record in this table represents the daily performance of ads at the campaign level.
+    columns:
+      - name: account_name
+        description: A label for the account.
+        tests:
+          - not_null
+
+      - name: account_id
+        description: Unique internal ID representing the account.
+
+      - name: date_day
+        description: The day of the activity.
+
+      - name: clicks
+        description: The count of chargeable clicks.
+
+      - name: impressions
+        description: This is the count of "impressions" for Direct Ads and Sponsored Updates and "sends" for InMails.
+
+      - name: cost
+        description: The cost of the ads in the local currency or USD.
+
+      - name: campaign_group_name
+        description: A label for the campaign group.
+        tests:
+          - not_null
+
+      - name: campaign_group_id
+        description: Unique internal ID representing the campaign group.
+
+      - name: campaign_name
+        description: A label for the campaign.
+        tests:
+          - not_null
+
+      - name: campaign_id
+        description: Unique internal ID representing the campaign.
+
+  - name: linkedin__campaign_group_ad_report
+    description: Each record in this table represents the daily performance of ads at the campaign group level.
+    columns:
+      - name: account_name
+        description: A label for the account.
+        tests:
+          - not_null
+
+      - name: account_id
+        description: Unique internal ID representing the account.
+
+      - name: date_day
+        description: The day of the activity.
+
+      - name: clicks
+        description: The count of chargeable clicks.
+
+      - name: impressions
+        description: This is the count of "impressions" for Direct Ads and Sponsored Updates and "sends" for InMails.
+
+      - name: cost
+        description: The cost of the ads in the local currency or USD.
+
+      - name: campaign_group_name
+        description: A label for the campaign group.
+        tests:
+          - not_null
+
+      - name: campaign_group_id
+        description: Unique internal ID representing the campaign group.
