@@ -26,7 +26,20 @@ with metrics as (
 ), joined as (
 
     select
-        metrics.*,
+        metrics.creative_id,
+        metrics.date_day,
+        metrics.clicks,
+        metrics.impressions,
+        metrics.cost,
+        metrics.daily_creative_id,
+        creatives.base_url,
+        creatives.url_host,
+        creatives.url_path,
+        creatives.utm_source,
+        creatives.utm_medium,
+        creatives.utm_campaign,
+        creatives.utm_content,
+        creatives.utm_term,
         campaigns.campaign_name,
         campaigns.campaign_id,
         campaign_groups.campaign_group_name,
