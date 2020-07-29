@@ -32,7 +32,7 @@ vars:
     linkedin_database: your_schema_name 
 ```
 
-For additional configurations for the source models, please visit the [Marketo source package](https://github.com/fivetran/dbt_marketo_source).
+For additional configurations for the source models, please visit the [Linkedin source package](https://github.com/fivetran/dbt_linkedin_source).
 
 ## Contributions
 
