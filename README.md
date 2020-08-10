@@ -2,11 +2,11 @@
 
 This package models LinkedIn Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/linkedin-ads). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1nwR5efra1p3S1uOwUgU9Wdx7WBKXE7onxNDffK0IpgM/edit#slide=id.g311502b468_5_443).
 
-The main focus of the package is to transform the core ad object tables into analytics-ready models, including an 'ad adapter' model that can be easily unioned in to other ad platform packages to get a single-view 
+The main focus of the package is to transform the core ad object tables into analytics-ready models, including an 'ad adapter' model that can be easily unioned in to other ad platform packages to get a single view. 
 
 ## Models
 
-This package contains transformation models, designed to work simultaneously with our [LinkedIn Ads source package](https://github.com/fivetran/dbt_linkedin_source). A depenedency on the source package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. The primary outputs of this package are described below.
+This package contains transformation models, designed to work simultaneously with our [LinkedIn Ads source package](https://github.com/fivetran/dbt_linkedin_source). A dependency on the source package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. The primary outputs of this package are described below.
 
 | **model**                          | **description**                                                                                                        |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -19,7 +19,7 @@ This package contains transformation models, designed to work simultaneously wit
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
-By default this package will look for your Marketo data in the `linkedin_ads` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your LinkedIn Ads data is, please add the following configuration to your `dbt_project.yml` file:
+By default, this package will look for your LinkedIn Ads data in the `linkedin_ads` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your LinkedIn Ads data is, please add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
