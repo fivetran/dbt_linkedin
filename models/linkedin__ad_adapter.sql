@@ -49,20 +49,20 @@ with metrics as (
     from metrics
     left join creatives
         on metrics.creative_id = creatives.creative_id
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= creatives.valid_from
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(creatives.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} >= creatives.valid_from
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} <= coalesce(creatives.valid_to, {{ timestamp_add('day', 1, dbt_utils.current_timestamp()) }})
     left join campaigns
         on creatives.campaign_id = campaigns.campaign_id
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= campaigns.valid_from
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(campaigns.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} >= campaigns.valid_from
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} <= coalesce(campaigns.valid_to, {{ timestamp_add('day', 1, dbt_utils.current_timestamp()) }})
     left join campaign_groups
         on campaigns.campaign_group_id = campaign_groups.campaign_group_id
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= campaign_groups.valid_from
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(campaign_groups.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} >= campaign_groups.valid_from
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} <= coalesce(campaign_groups.valid_to, {{ timestamp_add('day', 1, dbt_utils.current_timestamp()) }})
     left join accounts
         on campaign_groups.account_id = accounts.account_id
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) >= accounts.valid_from
-        and timestamp_add(metrics.date_day, INTERVAL 1 DAY) <= coalesce(accounts.valid_to, timestamp_add(current_timestamp, INTERVAL 1 DAY))
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} >= accounts.valid_from
+        and {{ timestamp_add('day', 1, 'metrics.date_day') }} <= coalesce(accounts.valid_to, {{ timestamp_add('day', 1, dbt_utils.current_timestamp()) }})
 
 )
 
