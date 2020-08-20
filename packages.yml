@@ -3,5 +3,5 @@ packages:
   - package: fishtown-analytics/dbt_utils
     version: 0.5.0
   
-  - package: fivetran/dbt_linkedin_source
+  - package: fivetran/linkedin_source
     version: 0.1.0
