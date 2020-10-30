@@ -1,27 +1,27 @@
 with metrics as (
 
     select *
-    from {{ ref('stg_linkedin__ad_analytics_by_creative') }}
+    from {{ var('ad_analytics_by_creative') }}
 
 ), creatives as (
 
     select *
-    from {{ ref('stg_linkedin__creative_history') }}
+    from {{ var('creative_history') }}
 
 ), campaigns as (
     
     select *
-    from {{ ref('stg_linkedin__campaign_history') }}
+    from {{ var('campaign_history') }}
 
 ), campaign_groups as (
     
     select *
-    from {{ ref('stg_linkedin__campaign_group_history') }}
+    from {{ var('campaign_group_history') }}
 
 ), accounts as (
     
     select *
-    from {{ ref('stg_linkedin__account_history') }}
+    from {{ var('account_history') }}
 
 ), joined as (
 
