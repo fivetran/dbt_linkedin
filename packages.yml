@@ -1,7 +1,4 @@
-packages:
-  - package: fishtown-analytics/dbt_utils
-    version: [">=0.6.0", "<0.7.0"]
-  
+packages:  
   - package: fivetran/linkedin_source
     version: [">=0.2.0", "<0.3.0"]
 
