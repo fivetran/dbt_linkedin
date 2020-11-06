@@ -18,18 +18,12 @@ models:
 
       - name: campaign_name
         description: A label for the campaign.
-        tests:
-          - not_null
 
       - name: campaign_group_name
         description: A label for the campaign group.
-        tests:
-          - not_null
 
       - name: account_name
         description: A label for the account.
-        tests:
-          - not_null
 
       - name: campaign_id
         description: Unique internal ID representing the campaign.
@@ -81,8 +75,6 @@ models:
     columns:
       - name: account_name
         description: A label for the account.
-        tests:
-          - not_null
 
       - name: account_id
         description: Unique internal ID representing the account.
@@ -104,8 +96,6 @@ models:
     columns:
       - name: account_name
         description: A label for the account.
-        tests:
-          - not_null
 
       - name: account_id
         description: Unique internal ID representing the account.
@@ -124,16 +114,12 @@ models:
 
       - name: campaign_group_name
         description: A label for the campaign group.
-        tests:
-          - not_null
 
       - name: campaign_group_id
         description: Unique internal ID representing the campaign group.
 
       - name: campaign_name
         description: A label for the campaign.
-        tests:
-          - not_null
 
       - name: campaign_id
         description: Unique internal ID representing the campaign.
@@ -143,8 +129,6 @@ models:
     columns:
       - name: account_name
         description: A label for the account.
-        tests:
-          - not_null
 
       - name: account_id
         description: Unique internal ID representing the account.
@@ -163,8 +147,6 @@ models:
 
       - name: campaign_group_name
         description: A label for the campaign group.
-        tests:
-          - not_null
 
       - name: campaign_group_id
         description: Unique internal ID representing the campaign group.
