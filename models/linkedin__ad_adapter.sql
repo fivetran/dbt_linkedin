@@ -47,8 +47,8 @@ with metrics as (
         accounts.account_name,
         accounts.account_id
 
-        {% if var('linkedin__passthrough_metrics', []) != [] %}
-        , {{ 'metrics.' ~ var('linkedin__passthrough_metrics', [] )  | join(', metrics.') }}
+        {% if var('linkedin__passthrough_metrics') %}
+        , {{ 'metrics.' ~ var('linkedin__passthrough_metrics')  | join(', metrics.') }}
         {% endif %}
 
     from metrics
