@@ -1,6 +1,6 @@
 
 name: 'linkedin'
-version: '0.2.0'
+version: '0.3.0'
 config-version: 2
 require-dbt-version: [">=0.18.0", "<0.20.0"]
 
@@ -12,6 +12,9 @@ vars:
         campaign_group_history: "{{ ref('stg_linkedin__campaign_group_history') }}"
         account_history: "{{ ref('stg_linkedin__account_history') }}"
 
+    linkedin__passthrough_metrics: [] 
+
 models:
     linkedin:
-        materialized: table
+        +materialized: table
+        +schema: linkedin
