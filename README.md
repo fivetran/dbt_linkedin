@@ -59,7 +59,7 @@ vars:
 ```
 
 ### Changing the Build Schema
-By default this package will build the LinkedIn Ad Analytics models within a schema titled (<target_schema> + `_linkedin`) in your target database. If this is not where you would like your modeled LinkedIn data to be written to, add the following configuration to your `dbt_project.yml` file:
+By default this package will build the LinkedIn Ad Analytics staging models within a schema titled (<target_schema> + `_stg_linkedin`) and the LinkedIn Ad Analytics final models within a schema titled (<target_schema> + `_linkedin`) in your target database. If this is not where you would like your modeled LinkedIn data to be written to, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -67,6 +67,8 @@ By default this package will build the LinkedIn Ad Analytics models within a sch
 ...
 models:
     linkedin:
+      +schema: my_new_schema_name # leave blank for just the target_schema
+    linkedin_source:
       +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
