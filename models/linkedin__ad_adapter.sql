@@ -46,6 +46,11 @@ with metrics as (
         campaign_groups.campaign_group_id,
         accounts.account_name,
         accounts.account_id
+
+        {% if var('linkedin__passthrough_metrics') %}
+        , {{ 'metrics.' ~ var('linkedin__passthrough_metrics')  | join(', metrics.') }}
+        {% endif %}
+
     from metrics
     left join creatives
         on metrics.creative_id = creatives.creative_id
