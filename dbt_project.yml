@@ -9,8 +9,6 @@ vars:
     campaign_history: "{{ ref('stg_linkedin__campaign_history') }}"
     campaign_group_history: "{{ ref('stg_linkedin__campaign_group_history') }}"
     account_history: "{{ ref('stg_linkedin__account_history') }}"
-  dbt_utils_dispatch_list: ['spark_utils', 'fivetran_utils']
-  fivetran_utils_dispatch_list: ['spark_utils']
   linkedin__passthrough_metrics: []
 models:
   linkedin:
