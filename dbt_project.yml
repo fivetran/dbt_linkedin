@@ -1,7 +1,7 @@
 name: 'linkedin'
-version: '0.3.0'
+version: '0.4.0'
 config-version: 2
-require-dbt-version: [">=0.20.0"]
+require-dbt-version: [">=1.0.0", "<2.0.0"]
 vars:
   linkedin:
     ad_analytics_by_creative: "{{ ref('stg_linkedin__ad_analytics_by_creative') }}"
