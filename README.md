@@ -11,10 +11,10 @@ This package contains transformation models, designed to work simultaneously wit
 
 | **model**                          | **description**                                                                                                        |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [linkedin__ad_adapter](models/linkedin__ad_adapter.sql)               | Each record represents the daily ad performance of each creative, including information about the used UTM parameters. |
-| [linkedin__account_ad_report](models/linkedin__account_ad_report.sql)        | Each record represents the daily ad performance of each account.                                                       |
-| [linkedin__campaign_ad_report](models/linkedin__campaign_ad_report.sql)       | Each record represents the daily ad performance of each campaign.                                                      |
-| [linkedin__campaign_group_ad_report](models/linkedin__campaign_group_ad_report.sql) | Each record represents the daily ad performance of each campaign group.                                                |
+| [linkedin__ad_adapter](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin__ad_adapter.sql)               | Each record represents the daily ad performance of each creative, including information about the used UTM parameters. |
+| [linkedin__account_ad_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin__account_ad_report.sql)        | Each record represents the daily ad performance of each account.                                                       |
+| [linkedin__campaign_ad_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin__campaign_ad_report.sql)       | Each record represents the daily ad performance of each campaign.                                                      |
+| [linkedin__campaign_group_ad_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin__campaign_group_ad_report.sql) | Each record represents the daily ad performance of each campaign group.                                                |
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
