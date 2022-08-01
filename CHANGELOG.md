@@ -1,3 +1,11 @@
+# dbt_linkedin v0.5.0
+
+- renaming the model prefixes and removing `ad` 
+- `linkedin__account_ad_report` -> `linkedin_ads__account_report`
+- `linkedin__campaign_ad_report` -> `linkedin_ads__campaign_report`
+- `linkedin__campaign_group_ad_report` -> `linkedin_ads__campaign_group_report`
+- `linkedin__ad_adapter` -> `linkedin_ads__url_report`
+- 
 # dbt_linkedin v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨

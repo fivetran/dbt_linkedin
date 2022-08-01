@@ -1,16 +1,20 @@
 name: 'linkedin'
-version: '0.4.0'
+version: '0.5.0'
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
+
 vars:
   linkedin:
-    ad_analytics_by_creative: "{{ ref('stg_linkedin__ad_analytics_by_creative') }}"
-    creative_history: "{{ ref('stg_linkedin__creative_history') }}"
-    campaign_history: "{{ ref('stg_linkedin__campaign_history') }}"
-    campaign_group_history: "{{ ref('stg_linkedin__campaign_group_history') }}"
-    account_history: "{{ ref('stg_linkedin__account_history') }}"
-  linkedin__passthrough_metrics: []
+    ad_analytics_by_creative: "{{ ref('stg_linkedin_ads__ad_analytics_by_creative') }}"
+    ad_analytics_by_campaign: "{{ ref('stg_linkedin_ads__ad_analytics_by_campaign') }}"
+    creative_history: "{{ ref('stg_linkedin_ads__creative_history') }}"
+    campaign_history: "{{ ref('stg_linkedin_ads__campaign_history') }}"
+    campaign_group_history: "{{ ref('stg_linkedin_ads__campaign_group_history') }}"
+    account_history: "{{ ref('stg_linkedin_ads__account_history') }}"
+
+  linkedin_ads_passthrough_metrics: []
+
 models:
   linkedin:
     +materialized: table
-    +schema: linkedin
+    +schema: linkedin_ads
