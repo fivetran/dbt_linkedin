@@ -1,7 +1,7 @@
-with account as (
+with campaign_group as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ var('campaign_group_history') }}
     where valid_to is null -- get latest
 ),
 
@@ -9,6 +9,13 @@ campaign as (
 
     select *
     from {{ var('campaign_history') }}
+    where valid_to is null
+),
+
+account as (
+
+    select *
+    from {{ var('account_history') }}
     where valid_to is null
 ),
 
@@ -22,15 +29,18 @@ final as (
 
     select 
         report.date_day,
+        campaign_group.campaign_group_id,
+        campaign_group.campaign_group_name,
+        campaign_group.campaign_group_version_id,
         account.account_id,
         account.account_name,
-        account.version_tag,
-        account.account_version_id,
+        campaign_group.status,
         account.currency,
-        account.status,
-        account.type,
-        account.last_modified_at,
-        account.created_at,
+        campaign_group.is_backfilled,
+        campaign_group.run_schedule_start_at,
+        campaign_group.run_schedule_end_at,
+        campaign_group.last_modified_at,
+        campaign_group.created_at,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.cost) as cost
@@ -40,10 +50,12 @@ final as (
     from report 
     left join campaign 
         on report.campaign_id = campaign.campaign_id
+    left join campaign_group
+        on campaign.campaign_group_id = campaign_group.campaign_group_id
     left join account 
         on campaign.account_id = account.account_id
 
-    {{ dbt_utils.group_by(n=10) }}
+    {{ dbt_utils.group_by(n=13) }}
 
 )
 
