@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # dbt_linkedin v0.5.0
 
 ## 🚨 Breaking Changes 🚨
@@ -25,8 +24,6 @@ vars:
 - Added columns to `_report` models.
 - More complete table and column documentation.
 
-=======
->>>>>>> main
 # dbt_linkedin v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨
