@@ -9,7 +9,6 @@ campaign as (
 
     select *
     from {{ var('campaign_history') }}
-    where valid_to is null
 ),
 
 report as (
