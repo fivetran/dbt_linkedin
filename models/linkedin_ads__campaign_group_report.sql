@@ -31,7 +31,6 @@ final as (
         report.date_day,
         campaign_group.campaign_group_id,
         campaign_group.campaign_group_name,
-        campaign_group.campaign_group_version_id,
         account.account_id,
         account.account_name,
         campaign_group.status,
@@ -55,7 +54,7 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    {{ dbt_utils.group_by(n=13) }}
+    {{ dbt_utils.group_by(n=12) }}
 
 )
 

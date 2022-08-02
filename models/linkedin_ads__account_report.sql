@@ -25,7 +25,6 @@ final as (
         account.account_id,
         account.account_name,
         account.version_tag,
-        account.account_version_id,
         account.currency,
         account.status,
         account.type,
@@ -43,7 +42,7 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    {{ dbt_utils.group_by(n=10) }}
+    {{ dbt_utils.group_by(n=9) }}
 
 )
 

@@ -2,6 +2,7 @@ with creative as (
 
     select *
     from {{ var('creative_history') }}
+    where valid_to is null
 ),
 
 campaign as (
@@ -37,7 +38,6 @@ final as (
         report.date_day,
         creative.creative_id,
         creative.version_tag,
-        creative.creative_version_id,
         campaign.campaign_id,
         campaign.campaign_name,
         campaign_group.campaign_group_id,
@@ -69,7 +69,7 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    {{ dbt_utils.group_by(n=19) }}
+    {{ dbt_utils.group_by(n=18) }}
 
 )
 

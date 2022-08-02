@@ -1,11 +1,29 @@
 # dbt_linkedin v0.5.0
 
-- renaming the model prefixes and removing `ad` 
-- `linkedin__account_ad_report` -> `linkedin_ads__account_report`
-- `linkedin__campaign_ad_report` -> `linkedin_ads__campaign_report`
-- `linkedin__campaign_group_ad_report` -> `linkedin_ads__campaign_group_report`
-- `linkedin__ad_adapter` -> `linkedin_ads__url_report`
-- 
+## 🚨 Breaking Changes 🚨
+- The following models have been renamed:
+  - `linkedin__account_ad_report` -> `linkedin_ads__account_report`
+  - `linkedin__campaign_ad_report` -> `linkedin_ads__campaign_report`
+  - `linkedin__campaign_group_ad_report` -> `linkedin_ads__campaign_group_report`
+- The `linkedin__ad_adapter` model has been renamed and refactored into two separate models:
+  - `linkedin_ads__url_report`
+  - `linkedin_ads__creative_report`
+- **All** models and **all** variables now have the prefix `linkedin_ads_*`. They previously were prepended with `linkedin_*`. This includes the required schema and database variables, and the optional passthrough-metric variable.
+- The declaration of passthrough variables within your root `dbt_project.yml` has changed. To allow for more flexibility and better tracking of passthrough columns, you will now want to define passthrough columns in the following format:
+```yml
+vars:
+  linkedin_ads__passthrough_metrics: # Note that this used to be called linkedin__passthrough_metrics
+    - name: "my_field_to_include" # Required: Name of the field within the source.
+      alias: "field_alias" # Optional: If you wish to alias the field within the staging model.
+      transform_sql: "cast(field_alias as string)" # Optional: If you wish to define the datatype or apply a light transformation.
+```
+
+## 🎉 Feature Enhancements 🎉
+- README updates for easier navigation and use of the package.
+- Addition of identifier variables for each of the source tables to allow for further flexibility in source table direction within the dbt project.
+- Added columns to `_report` models.
+- More complete table and column documentation.
+
 # dbt_linkedin v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨
