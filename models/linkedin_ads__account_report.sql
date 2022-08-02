@@ -2,7 +2,7 @@ with account as (
 
     select *
     from {{ var('account_history') }}
-    where valid_to is null -- get latest
+    where valid_to is null -- get latest 
 ),
 
 campaign as (
