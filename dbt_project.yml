@@ -16,4 +16,4 @@ vars:
 models:
   linkedin:
     +materialized: table
-    +schema: linkedin
+    +schema: linkedin_ads
