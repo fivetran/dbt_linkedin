@@ -1,13 +1,15 @@
 # dbt_linkedin v0.5.0
 
+PR [#21](https://github.com/fivetran/dbt_linkedin/pull/21) includes the following changes:
+
 ## 🚨 Breaking Changes 🚨
 - The following models have been renamed:
   - `linkedin__account_ad_report` -> `linkedin_ads__account_report`
   - `linkedin__campaign_ad_report` -> `linkedin_ads__campaign_report`
   - `linkedin__campaign_group_ad_report` -> `linkedin_ads__campaign_group_report`
 - The `linkedin__ad_adapter` model has been renamed and refactored into two separate models:
-  - `linkedin_ads__url_report`
-  - `linkedin_ads__creative_report`
+  - `linkedin_ads__url_report`: Each record in this table represents the daily performance at the url level.
+  - `linkedin_ads__creative_report`: Each record in this table represents the daily performance at the creative level.
 - **All** models and **all** variables now have the prefix `linkedin_ads_*`. They previously were prepended with `linkedin_*`. This includes the required schema and database variables, and the optional passthrough-metric variable.
 - The declaration of passthrough variables within your root `dbt_project.yml` has changed. To allow for more flexibility and better tracking of passthrough columns, you will now want to define passthrough columns in the following format:
 ```yml
@@ -23,6 +25,7 @@ vars:
 - Addition of identifier variables for each of the source tables to allow for further flexibility in source table direction within the dbt project.
 - Added columns to `_report` models.
 - More complete table and column documentation.
+- More robust schema tests.
 
 # dbt_linkedin v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
