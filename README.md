@@ -10,7 +10,7 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# LinkedIn Ad Analytics Transformation dbt Package ([docs](https://fivetran-dbt-linkedin.netlify.app/#!/overview))
+# LinkedIn Ad Analytics Transformation dbt Package ([docs](https://fivetran.github.io/dbt_linkedin/))
 # 📣 What does this dbt package do?
 - Produces modeled tables that leverage Linkedin Ad Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/linkedin-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/linkedin-ads#schemainformation) and builds off the output of our [Linkedin Ads source package](https://github.com/fivetran/dbt_linkedin_source).
 - Enables you to better understand the performance of your ads across varying grains:
