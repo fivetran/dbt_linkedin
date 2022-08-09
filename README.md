@@ -23,11 +23,11 @@ The following table provides a detailed list of all models materialized within t
 
 | **Model**                          | **Description**                                                                                                        |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [linkedin_ads__account_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__account_report.sql)        | Each record represents the daily ad performance of each account.                                                       |
-| [linkedin_ads__campaign_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_report.sql)       | Each record represents the daily ad performance of each campaign. Linkedin campaigns map onto ad groups in other ad platforms.                                                      |
-| [linkedin_ads__campaign_group_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_group_report.sql) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
-| [linkedin_ads__creative_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__creative_report.sql) | Each record represents the daily ad performance of each creative.                                                |
-| [linkedin_ads__url_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__url_report.sql) | Each record represents the daily ad performance of each url.                                                |
+| [linkedin_ads__account_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__account_report)        | Each record represents the daily ad performance of each account.                                                       |
+| [linkedin_ads__campaign_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__campaign_report)       | Each record represents the daily ad performance of each campaign. Linkedin campaigns map onto ad groups in other ad platforms.                                                      |
+| [linkedin_ads__campaign_group_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__campaign_group_report) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
+| [linkedin_ads__creative_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__creative_report) | Each record represents the daily ad performance of each creative.                                                |
+| [linkedin_ads__url_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__url_report) | Each record represents the daily ad performance of each url.                                                |
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
@@ -80,13 +80,17 @@ By default, this package will select `clicks`, `impressions`, and `cost` from `a
 ```yml
 # dbt_project.yml
 vars:
-    linkedin_ads__passthrough_metrics: 
+    linkedin_ads__campaign_passthrough_metrics: # this will pass through fields to the account, campaign, and campaign group report models.
         - name: "new_custom_field"
           alias: "custom_field"
         - name: "unique_int_field"
           alias: "field_id"
           transform_sql: "cast(field_id as int)"
-        - name: "that_field"
+    linkedin_ads__creative_passthrough_metrics: # this will pass through fields to the creative and url report models.
+        - name: "new_custom_field"
+          alias: "custom_field"
+        - name: "unique_int_field"
+          transform_sql: "unique_int_field / 100.0"
 ```
 
 > Please ensure you use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetting by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports which are comprised of averages. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate.

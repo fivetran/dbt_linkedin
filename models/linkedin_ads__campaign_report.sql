@@ -2,21 +2,21 @@ with campaign as (
 
     select *
     from {{ var('campaign_history') }}
-    where valid_to is null
+    where is_latest_version
 ),
 
 campaign_group as (
 
     select *
     from {{ var('campaign_group_history') }}
-    where valid_to is null -- get latest
+    where is_latest_version
 ),
 
 account as (
 
     select *
     from {{ var('account_history') }}
-    where valid_to is null
+    where is_latest_version
 ),
 
 report as (
@@ -61,7 +61,7 @@ final as (
         sum(report.impressions) as impressions,
         sum(report.cost) as cost
 
-        {{ fivetran_utils.persist_pass_through_columns('linkedin_ads__passthrough_metrics', transform='sum') }}
+        {{ fivetran_utils.persist_pass_through_columns('linkedin_ads__campaign_passthrough_metrics', transform='sum') }}
     
     from report 
     left join campaign 

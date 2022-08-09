@@ -63,7 +63,9 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - date_day
-            - campaign_id    
+            - campaign_id
+            - account_id
+            - campaign_group_id
     columns:
       - name: account_name
         description: A label for the account.
@@ -213,6 +215,7 @@ models:
           combination_of_columns:
             - date_day
             - campaign_group_id
+            - account_id
     columns:
       - name: account_name
         description: A label for the account.
@@ -278,6 +281,9 @@ models:
           combination_of_columns:
             - date_day
             - creative_id    
+            - campaign_id
+            - campaign_group_id
+            - account_id
     columns:
       - name: account_name
         description: A label for the account.
@@ -386,6 +392,9 @@ models:
           combination_of_columns:
             - date_day
             - creative_id    
+            - campaign_id
+            - campaign_group_id
+            - account_id
     columns:
       - name: account_name
         description: A label for the account.

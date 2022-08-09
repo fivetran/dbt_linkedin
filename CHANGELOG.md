@@ -14,9 +14,13 @@ PR [#21](https://github.com/fivetran/dbt_linkedin/pull/21) includes the followin
 - The declaration of passthrough variables within your root `dbt_project.yml` has changed. To allow for more flexibility and better tracking of passthrough columns, you will now want to define passthrough columns in the following format:
 ```yml
 vars:
-  linkedin_ads__passthrough_metrics: # NOTE that this used to be called linkedin__passthrough_metrics
+  linkedin_ads__campaign_passthrough_metrics: # this will pass through fields to the account, campaign, and campaign group report models.
     - name: "my_field_to_include" # Required: Name of the field within the source.
       alias: "field_alias" # Optional: If you wish to alias the field within the staging model.
+      transform_sql: "cast(field_alias as string)" # Optional: If you wish to define the datatype or apply a light transformation.
+  linkedin_ads__campaign_passthrough_metrics: # this will pass through fields to the creative and url report models.
+    - name: "my_field_to_include"
+      alias: "field_alias"
       transform_sql: "cast(field_alias as string)" # Optional: If you wish to define the datatype or apply a light transformation.
 ```
 - Staging models are now by default written within a schema titled (`<target_schema>` + `_linkedin_ads_source`) in your destination. Previously, this was titled (`<target_schema>` + `_stg_linkedin`).

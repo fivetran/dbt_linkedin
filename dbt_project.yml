@@ -11,7 +11,8 @@ vars:
     campaign_group_history: "{{ ref('stg_linkedin_ads__campaign_group_history') }}"
     account_history: "{{ ref('stg_linkedin_ads__account_history') }}"
     ad_analytics_by_campaign: "{{ ref('stg_linkedin_ads__ad_analytics_by_campaign') }}"
-  linkedin_ads__passthrough_metrics: []
+  linkedin_ads__creative_passthrough_metrics: []
+  linkedin_ads__campaign_passthrough_metrics: []
 
 models:
   linkedin:
