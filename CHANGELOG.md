@@ -3,7 +3,7 @@
 PR [#21](https://github.com/fivetran/dbt_linkedin/pull/21) includes the following changes:
 
 ## 🚨 Breaking Changes 🚨
-- **ALL** models and **ALL** variables now have the prefix `linkedin_ads_*`. They previously were prepended with `linkedin_*`. This includes the required schema and database variables.
+- **ALL** models and **ALL** variables now have the prefix `linkedin_ads_*`. They previously were prepended with `linkedin_*`. This includes the required schema and database variables. We made this change to better discern between Linkedin Ads and [Linkedin Pages](https://github.com/fivetran/dbt_linkedin_pages/tree/main).
 - The following models have been renamed:
   - `linkedin__account_ad_report` -> `linkedin_ads__account_report`
   - `linkedin__campaign_ad_report` -> `linkedin_ads__campaign_report`
@@ -14,11 +14,11 @@ PR [#21](https://github.com/fivetran/dbt_linkedin/pull/21) includes the followin
 - The declaration of passthrough variables within your root `dbt_project.yml` has changed. To allow for more flexibility and better tracking of passthrough columns, you will now want to define passthrough columns in the following format:
 ```yml
 vars:
-  linkedin_ads__campaign_passthrough_metrics: # this will pass through fields to the account, campaign, and campaign group report models.
+  linkedin_ads__campaign_passthrough_metrics: # this will pass through fields to the account, campaign, and campaign group report models. it pulls from `ad_analytics_by_campaign`
     - name: "my_field_to_include" # Required: Name of the field within the source.
       alias: "field_alias" # Optional: If you wish to alias the field within the staging model.
       transform_sql: "cast(field_alias as string)" # Optional: If you wish to define the datatype or apply a light transformation.
-  linkedin_ads__campaign_passthrough_metrics: # this will pass through fields to the creative and url report models.
+  linkedin_ads__creative_passthrough_metrics: # this will pass through fields to the creative and url report models.  it pulls from `ad_analytics_by_creative`
     - name: "my_field_to_include"
       alias: "field_alias"
       transform_sql: "cast(field_alias as string)" # Optional: If you wish to define the datatype or apply a light transformation.
