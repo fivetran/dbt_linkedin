@@ -23,11 +23,11 @@ The following table provides a detailed list of all models materialized within t
 
 | **Model**                          | **Description**                                                                                                        |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [linkedin_ads__account_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__account_report)        | Each record represents the daily ad performance of each account.                                                       |
-| [linkedin_ads__campaign_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__campaign_report)       | Each record represents the daily ad performance of each campaign. Linkedin campaigns map onto ad groups in other ad platforms.                                                      |
-| [linkedin_ads__campaign_group_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__campaign_group_report) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
-| [linkedin_ads__creative_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__creative_report) | Each record represents the daily ad performance of each creative.                                                |
-| [linkedin_ads__url_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__url_report) | Each record represents the daily ad performance of each url.                                                |
+| [linkedin_ads__account_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__account_report.sql)        | Each record represents the daily ad performance of each account.                                                       |
+| [linkedin_ads__campaign_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_report.sql)       | Each record represents the daily ad performance of each campaign. Linkedin campaigns map onto ad groups in other ad platforms.                                                      |
+| [linkedin_ads__campaign_group_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_group_report.sql) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
+| [linkedin_ads__creative_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__creative_report.sql) | Each record represents the daily ad performance of each creative.                                                |
+| [linkedin_ads__url_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__url_report.sql) | Each record represents the daily ad performance of each url.                                                |
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
