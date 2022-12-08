@@ -71,7 +71,12 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    where creative.click_uri is not null
+    {% if (var('include_linkedin_null_urls', False)) or
+        (var('include_ad_reporting_null_urls', False))  %}
+        -- In this case, skip where clause to include all rows whether or not the url field is populated.
+    {% else %}
+        where creative.click_uri is not null
+    {% endif %}
 
     {{ dbt_utils.group_by(n=19) }}
 

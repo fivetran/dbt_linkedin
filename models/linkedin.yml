@@ -431,6 +431,17 @@ models:
         description: |
           Required when creative type is TEXT_AD. Maximum character limit of 500 after URL encoding all special characters. 
           Limit does not include the "https://" prefix.
+        tests:
+          - not_null:
+              config:
+                # Below is so we don't run this test if the user has allowed urls to have null entries
+                enabled: >
+                  {%- if (var('allow_linkedin_null_urls', False)) 
+                  or (var('allow_ad_reporting_null_urls', False)) -%}
+                  {{ 'False' | as_bool }}
+                  {%- else -%}
+                  {{ 'True' | as_bool }}
+                  {%- endif -%}
 
       - name: base_url
         description: The base URL of the ad, extracted from the `click_uri`.
