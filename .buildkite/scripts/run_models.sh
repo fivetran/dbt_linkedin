@@ -20,5 +20,5 @@ dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
 ## UPDATE FOR VARS HERE, IF NO VARS, PLEASE REMOVE
-dbt run --vars '{linkedin_ads__use_local_currency: true, allow_ad_reporting_null_urls: true}' --target "$db" --full-refresh
-dbt test --vars '{linkedin_ads__use_local_currency: true, allow_ad_reporting_null_urls: true}' --target "$db"
+dbt run --vars '{linkedin_ads__use_local_currency: true, ad_reporting__url_report__using_null_filter: false}' --target "$db" --full-refresh
+dbt test --vars '{linkedin_ads__use_local_currency: true, ad_reporting__url_report__using_null_filter: false}' --target "$db"

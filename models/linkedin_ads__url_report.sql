@@ -71,10 +71,7 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    {% if (var('allow_linkedin_ads_null_urls', False)) or
-        (var('allow_ad_reporting_null_urls', False))  %}
-        -- In this case, skip where clause to include all rows whether or not the url field is populated.
-    {% else %}
+    {% if var('ad_reporting__url_report__using_null_filter', True) %}
         where creative.click_uri is not null
     {% endif %}
 
