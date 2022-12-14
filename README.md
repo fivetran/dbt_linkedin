@@ -66,16 +66,6 @@ vars:
 ## (Optional) Step 4: Additional configurations
 <details><summary>Expand for configurations</summary>
 
-## Enable records to have null urls
-The default behavior for the `linkedin_ads__url_report` end model is to filter out records having null URL fields, however you are able to turn off this filter if necessary. This is done by setting one of the variables below to `True` in your `dbt_project.yml` file. 
-> Note that using the variable `allow_ad_reporting_null_urls` will allow records with null urls for ALL Fivetran ad packages included in your project.
-
-```yml
-vars:
-  allow_linkedin_ads_null_urls: True # Use this variable to allow null urls for dbt_linkedin_ads only. Default is False. 
-  allow_ad_reporting_null_urls: True # Use this variable to allow null urls for ALL Fivetran ad packages included in your project. Default is False. 
-```
-
 ### Switching to Local Currency
 Additionally, the package allows you to select whether you want to add in costs in USD or the local currency of the ad. By default, the package uses USD. If you would like to have costs in the local currency, add the following variable to your `dbt_project.yml` file:
 
