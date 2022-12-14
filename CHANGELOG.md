@@ -1,17 +1,3 @@
-# dbt_linkedin_ads v0.6.1
-[PR #24](https://github.com/fivetran/dbt_linkedin/pull/24) includes the following changes:
-## 🎉 Features 🎉
-- Added ability for a user to allow records having nulls in url fields to be included in the `linkedin_ads__url_report` model. This is done by setting one of the variables below to `True` in your `dbt_project.yml` file. 
-- Note that using the variable `allow_ad_reporting_null_urls` will allow records with null urls for ALL Fivetran ad packages included in your project.
-```yml
-vars:
-  allow_linkedin_ads_null_urls: True # Use this variable to allow null urls for dbt_linkedin_ads only. Default is False. 
-  allow_ad_reporting_null_urls: True # Use this variable to allow null urls for ALL Fivetran ad packages included in your project. Default is False. 
-```
-- Updated README with this information. 
-## 🚘 Under the Hood 🚘
-- Disabled the `not_null` test for `linkedin_ads__url_report` when null urls are allowed.
-
 # dbt_linkedin v0.6.0
 
 ## 🚨 Breaking Changes 🚨:
