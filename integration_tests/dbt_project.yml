@@ -5,7 +5,7 @@ config-version: 2
 
 vars:
   linkedin_source:
-    linkedin_ads_schema: linkedin_integration_tests
+    linkedin_ads_schema: linkedin_integration_tests_2
     account_history: "{{ ref('linkedin_account_history_data') }}"
     ad_analytics_by_creative: "{{ ref('linkedin_ad_analytics_by_creative_data') }}"
     ad_analytics_by_campaign: "{{ ref('linkedin_ad_analytics_by_campaign_data') }}"
