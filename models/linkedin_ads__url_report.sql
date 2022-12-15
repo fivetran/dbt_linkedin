@@ -71,7 +71,9 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    where creative.click_uri is not null
+    {% if var('ad_reporting__url_report__using_null_filter', True) %}
+        where creative.click_uri is not null
+    {% endif %}
 
     {{ dbt_utils.group_by(n=19) }}
 
