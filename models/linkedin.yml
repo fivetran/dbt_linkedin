@@ -395,6 +395,9 @@ models:
             - campaign_id
             - campaign_group_id
             - account_id
+          config:
+            # Below is so we don't run this test if the user has allowed urls to have null entries
+            enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
     columns:
       - name: account_name
         description: A label for the account.
@@ -431,6 +434,11 @@ models:
         description: |
           Required when creative type is TEXT_AD. Maximum character limit of 500 after URL encoding all special characters. 
           Limit does not include the "https://" prefix.
+        tests:
+          - not_null:
+              config:
+                # Below is so we don't run this test if the user has allowed urls to have null entries
+                enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
 
       - name: base_url
         description: The base URL of the ad, extracted from the `click_uri`.
