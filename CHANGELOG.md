@@ -1,10 +1,10 @@
 # dbt_linkedin v0.6.1
 
 ## Bugfixes
+- `linkedin_ads__url_report` will now effectively filter out all those entries from `stg_linkedin_ads__creative_history` that are not the latest version of the creative. ([PR #26](https://github.com/fivetran/dbt_linkedin/pull/26))
 
-[PR #26](https://github.com/fivetran/dbt_linkedin/pull/26) includes the following change:
-
-- `linkedin_ads__url_report` will now effectively filter out all those entries from `stg_linkedin_ads__creative_history` that are not the latest version of the creative.
+## Contributors
+- [@aleix-cd](https://github.com/aleix-cd) ([PR #26](https://github.com/fivetran/dbt_linkedin/pull/26))
 
 # dbt_linkedin v0.6.0
 
