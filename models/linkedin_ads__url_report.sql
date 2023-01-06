@@ -4,6 +4,7 @@ with creative as (
 
     select *
     from {{ var('creative_history') }}
+    where is_latest_version
 ),
 
 campaign as (
