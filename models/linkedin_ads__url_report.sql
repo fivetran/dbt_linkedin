@@ -48,7 +48,6 @@ final as (
         creative.utm_content,
         creative.utm_term,
         creative.creative_id,
-        creative.version_tag,
         campaign.campaign_id,
         campaign.campaign_name,
         campaign_group.campaign_group_id,
