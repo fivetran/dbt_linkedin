@@ -2,5 +2,5 @@ packages:
 # - package: fivetran/linkedin_source
 #   version: [">=0.7.0", "<0.8.0"]
   - git: https://github.com/fivetran/dbt_linkedin_source.git
-    revision: main
+    revision: feature/linkedin-api-updates-2023
     warn-unpinned: false

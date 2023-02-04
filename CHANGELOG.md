@@ -10,6 +10,7 @@ The following fields have been completely deprecated in the `stg_linkedin_ads__c
 ## Updates
 - `linkedin_ads__creative_report` now includes `campaign.type as campaign_type` as a proxy for the previously used `creative.type` field.
 - `linkedin_ads__creative_report` no longer includes the fields `creative.version_tag`, `creative.type` and `creative.call_to_action_label_type`.
+- `linkedin_ads__creative_report` now leverages `report.creative_id` instead of `creative.creative_id`. 
 - `linkedin_ads__url_report` no longer includes the field `creative.version_tag`.
 
 ## Under the hood
