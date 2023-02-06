@@ -47,7 +47,7 @@ final as (
         creative.utm_campaign,
         creative.utm_content,
         creative.utm_term,
-        creative.creative_id,
+        report.creative_id,
         campaign.campaign_id,
         campaign.campaign_name,
         campaign_group.campaign_group_id,
