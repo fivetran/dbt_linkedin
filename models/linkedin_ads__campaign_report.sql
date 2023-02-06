@@ -31,7 +31,7 @@ final as (
 
     select 
         report.date_day,
-        campaign.campaign_id,
+        report.campaign_id,
         campaign.campaign_name,
         campaign.version_tag,
         campaign_group.campaign_group_id,
