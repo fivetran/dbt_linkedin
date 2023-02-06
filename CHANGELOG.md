@@ -11,16 +11,16 @@ The following fields have been completely deprecated in the `stg_linkedin_ads__c
 - `linkedin_ads__creative_report` now includes `campaign.type as campaign_type` as a proxy for the previously used `creative.type` field.
 - `linkedin_ads__creative_report` no longer includes the fields `creative.version_tag`, `creative.type` and `creative.call_to_action_label_type`.
 - `linkedin_ads__creative_report` now leverages `report.creative_id` instead of `creative.creative_id`. 
-- `linkedin_ads__url_report` no longer includes the field `creative.version_tag`.
+- `linkedin_ads__campaign_report` now leverages `report.campaign_id` instead of `campaign.campaign_id`.
+- `linkedin_ads__url_report` no longer includes the field `creative.version_tag` and now leverages `report.creative_id` instead of `creative.creative_id`.
 
 ## Under the hood
-For more information, please refer to [PR #](REFERENCE SOURCE PACKAGE PR)
-Legacy fields have been updated respectively in the connector and `dbt_linkedin_source v0.7.0` includes modifications that could affect the below fields within the `linkedin_ads__creative_history` model:
-- `last_modified_at`
-- `created_at`
-- `status`
-
-For more information, please refer to [PR #](REFERENCE SOURCE PACKAGE PR)
+- `integration_tests/seed/linkedin_creative_history_data` has been updated to reflect new fields and deprecated fields updates
+- Legacy fields have been updated respectively in the connector and `dbt_linkedin_source v0.7.0` includes modifications that could affect the below fields within the `linkedin_ads__creative_history` model:
+  - `last_modified_at`
+  - `created_at`
+  - `status`
+For more information, please refer to [dbt_linkedin_source PR #48](https://github.com/fivetran/dbt_linkedin_source/pull/48).
 # dbt_linkedin v0.6.1
 
 ## Bugfixes
