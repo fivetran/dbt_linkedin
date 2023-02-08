@@ -45,7 +45,6 @@ final as (
         campaign_group.campaign_group_name,
         account.account_id,
         account.account_name,
-        campaign.type as campaign_type, 
         creative.click_uri,
         creative.status as creative_status,
         campaign.status as campaign_status,
