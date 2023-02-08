@@ -68,7 +68,7 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    {{ dbt_utils.group_by(n=16) }}
+    {{ dbt_utils.group_by(n=15) }}
 
 )
 
