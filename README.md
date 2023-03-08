@@ -8,6 +8,9 @@
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
+    <a alt="Fivetran Quickstart Compatibile"
+        href="https://fivetran.com/docs/transformations/dbt/quickstart">
+        <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatibile%3F-yes-green.svg" /></a>
 </p>
 
 # LinkedIn Ad Analytics Transformation dbt Package ([docs](https://fivetran.github.io/dbt_linkedin/))
@@ -18,6 +21,7 @@
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
 - Generates a comprehensive data dictionary of your source and modeled Linkedin Ad Analytics data through the [dbt docs site](https://fivetran.github.io/dbt_linkedin/).
 
+<!--section="linkedin_ads_transformation_model"-->
 The following table provides a detailed list of all models materialized within this package by default. 
 > TIP: See more details about these models in the package's [dbt docs site](https://fivetran.github.io/dbt_linkedin/#!/overview?g_v=1&g_e=seeds).
 
@@ -28,6 +32,7 @@ The following table provides a detailed list of all models materialized within t
 | [linkedin_ads__campaign_group_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_group_report.sql) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
 | [linkedin_ads__creative_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__creative_report.sql) | Each record represents the daily ad performance of each creative.                                                |
 | [linkedin_ads__url_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__url_report.sql) | Each record represents the daily ad performance of each url.                                                |
+<!--section-end-->
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
@@ -150,4 +155,4 @@ A small team of analytics engineers at Fivetran develops these dbt packages. How
 # 🏪 Are there any resources available?
 - If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_linkedin/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran or would like to request a new dbt package, fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
-- Have questions or want to just say hi? Book a time during our office hours [on Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com.
+- Have questions or want to be part of the community discourse? Create a post in the [Fivetran community](https://community.fivetran.com/t5/user-group-for-dbt/gh-p/dbt-user-group) and our team along with the community can join in on the discussion!
