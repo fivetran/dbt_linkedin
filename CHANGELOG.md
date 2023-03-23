@@ -19,6 +19,7 @@ The following fields have been completely deprecated in the `stg_linkedin_ads__c
   - `last_modified_at`
   - `created_at`
   - `status`
+  
 For more information, please refer to [dbt_linkedin_source PR #48](https://github.com/fivetran/dbt_linkedin_source/pull/48).
 # dbt_linkedin v0.6.1
 
