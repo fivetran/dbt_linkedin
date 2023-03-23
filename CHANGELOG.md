@@ -1,3 +1,26 @@
+# dbt_linkedin v0.7.0
+## 🚨 Breaking Changes 🚨
+Due to Linkedin Ads API [change in January 2023](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes?view=li-lms-2022-12#january-2023), there have been updates in the Linkedin Ads Fivetran Connector and therefore, updates to this Linkedin package. 
+
+The following fields have been completely deprecated in the `stg_linkedin_ads__creative_history` model ([dbt_linkedin_source PR #48](https://github.com/fivetran/dbt_linkedin_source/pull/48)) and therefore removed from the below respective models in this package([#28](https://github.com/fivetran/dbt_linkedin/pull/28)):
+- `type` (removed from `*_creative_report`)
+- `call_to_action_label_type` (removed from `*_creative_report`)
+- `version_tag` (removed from `*_creative_report` and `*_url_report`)
+
+## Updates
+[PR #28](https://github.com/fivetran/dbt_linkedin/pull/28) introduces the below changes:
+- `linkedin_ads__creative_report` now leverages `report.creative_id` instead of `creative.creative_id`. 
+- `linkedin_ads__campaign_report` now leverages `report.campaign_id` instead of `campaign.campaign_id`.
+- `linkedin_ads__url_report` now leverages `report.creative_id` instead of `creative.creative_id`.
+
+## Under the hood
+- `integration_tests/seed/linkedin_creative_history_data` has been updated to reflect new fields and deprecated field updates
+- Legacy fields have been updated respectively in the connector and `dbt_linkedin_source v0.7.0` includes modifications that could affect the below fields within the `linkedin_ads__creative_history` model:
+  - `last_modified_at`
+  - `created_at`
+  - `status`
+  
+For more information, please refer to [dbt_linkedin_source PR #48](https://github.com/fivetran/dbt_linkedin_source/pull/48).
 # dbt_linkedin v0.6.1
 
 ## Bugfixes

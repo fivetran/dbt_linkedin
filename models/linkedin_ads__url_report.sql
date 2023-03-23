@@ -47,8 +47,7 @@ final as (
         creative.utm_campaign,
         creative.utm_content,
         creative.utm_term,
-        creative.creative_id,
-        creative.version_tag,
+        report.creative_id,
         campaign.campaign_id,
         campaign.campaign_name,
         campaign_group.campaign_group_id,
@@ -76,7 +75,7 @@ final as (
         where creative.click_uri is not null
     {% endif %}
 
-    {{ dbt_utils.group_by(n=19) }}
+    {{ dbt_utils.group_by(n=18) }}
 
 )
 

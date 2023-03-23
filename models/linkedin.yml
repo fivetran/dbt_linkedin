@@ -328,21 +328,6 @@ models:
       - name: created_at
         description: The timestamp of when the creative was created.
 
-      - name: type
-        description: |
-          TEXT_AD - Text with Sponsored Link to landing page on your site.
-          SPONSORED_STATUS_UPDATE - Sponsored status update from a profile page.
-          SPONSORED_INMAILS - Single message ad delivered to the member's inbox
-          SPONSORED_MESSAGE - Conversation ad containing a tree of pre-determined messages delivered to the member's inbox
-          SPONSORED_VIDEO - Sponsored videos.
-          SPONSORED_UPDATE_CAROUSEL - Sponsored Carousels
-          FOLLOW_COMPANY_V2 - Dynamic Follow Ad
-          SPOTLIGHT_V2 - Dynamic Spotlight Ad
-          JOBS_V2 - Dynamic Job Ad
-
-      - name: version_tag
-        description: An integer representation of the version of the creative.
-
       - name: creative_status
         description: |
           ACTIVE - Creative creation is complete and creative is available for review and serve.
@@ -355,9 +340,6 @@ models:
         description: |
           Required when creative type is TEXT_AD. Maximum character limit of 500 after URL encoding all special characters. 
           Limit does not include the "https://" prefix.
-
-      - name: call_to_action_label_type
-        description: The labeled call-to-action on this ad.
 
       - name: campaign_group_status
         description: >
@@ -466,9 +448,6 @@ models:
       
       - name: currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
-      
-      - name: version_tag
-        description: An integer representation of the version of the creative.
 
       - name: campaign_name
         description: A label for the creative's campaign.

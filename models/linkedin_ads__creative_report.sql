@@ -38,20 +38,17 @@ final as (
 
     select 
         report.date_day,
-        creative.creative_id,
-        creative.version_tag,
+        report.creative_id,
         campaign.campaign_id,
         campaign.campaign_name,
         campaign_group.campaign_group_id,
         campaign_group.campaign_group_name,
         account.account_id,
         account.account_name,
-        creative.type,
         creative.click_uri,
         creative.status as creative_status,
         campaign.status as campaign_status,
         campaign_group.status as campaign_group_status,
-        creative.call_to_action_label_type,
         account.currency,
         creative.last_modified_at,
         creative.created_at,
@@ -71,7 +68,7 @@ final as (
     left join account 
         on campaign.account_id = account.account_id
 
-    {{ dbt_utils.group_by(n=18) }}
+    {{ dbt_utils.group_by(n=15) }}
 
 )
 
