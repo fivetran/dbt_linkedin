@@ -1,3 +1,4 @@
+UPDATE TESTS AND CHECK SOURCE_RELATION ADDED PROPERLY!!! (delete line when done.)
 version: 2
 
 models:
@@ -7,9 +8,12 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - date_day
             - account_id 
     columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
       - name: account_name
         description: A label for the account.
 
@@ -62,11 +66,14 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - date_day
             - campaign_id
             - account_id
             - campaign_group_id
     columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
       - name: account_name
         description: A label for the account.
 
@@ -213,10 +220,13 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - date_day
             - campaign_group_id
             - account_id
     columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
       - name: account_name
         description: A label for the account.
 
@@ -279,12 +289,15 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - date_day
             - creative_id    
             - campaign_id
             - campaign_group_id
             - account_id
     columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
       - name: account_name
         description: A label for the account.
 
@@ -372,6 +385,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - date_day
             - creative_id    
             - campaign_id
@@ -381,6 +395,8 @@ models:
             # Below is so we don't run this test if the user has allowed urls to have null entries
             enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
     columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
       - name: account_name
         description: A label for the account.
 

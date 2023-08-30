@@ -1,3 +1,5 @@
+ADD source_relation WHERE NEEDED + CHECK JOINS AND WINDOW FUNCTIONS! (Delete this line when done.)
+
 {{ config(enabled=var('ad_reporting__linkedin_ads_enabled', True)) }}
 
 with account as (
@@ -23,6 +25,7 @@ report as (
 final as (
 
     select 
+        report.source_relation,
         report.date_day,
         account.account_id,
         account.account_name,
@@ -41,8 +44,10 @@ final as (
     from report 
     left join campaign 
         on report.campaign_id = campaign.campaign_id
+        and report.source_relation = campaign.source_relation
     left join account 
         on campaign.account_id = account.account_id
+        and campaign.source_relation = account.source_relation
 
     {{ dbt_utils.group_by(n=9) }}
 
