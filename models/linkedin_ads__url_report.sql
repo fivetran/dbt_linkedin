@@ -1,5 +1,3 @@
-ADD source_relation WHERE NEEDED + CHECK JOINS AND WINDOW FUNCTIONS! (Delete this line when done.)
-
 {{ config(enabled=var('ad_reporting__linkedin_ads_enabled', True)) }}
 
 with creative as (
@@ -82,7 +80,7 @@ final as (
         where creative.click_uri is not null
     {% endif %}
 
-    {{ dbt_utils.group_by(n=18) }}
+    {{ dbt_utils.group_by(19) }}
 
 )
 

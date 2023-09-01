@@ -55,7 +55,7 @@ Include the following Linkedin Ads package version in your `packages.yml` file:
 # packages.yml
 packages:
   - package: fivetran/linkedin
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 ```
 Do **NOT** include the `linkedin_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well. 
 
@@ -149,7 +149,7 @@ This dbt package is dependent on the following dbt packages. Please be aware tha
 ```yml
 packages:
     - package: fivetran/linkedin_source
-      version: [">=0.7.0", "<0.8.0"]
+      version: [">=0.8.0", "<0.9.0"]
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
     - package: dbt-labs/dbt_utils

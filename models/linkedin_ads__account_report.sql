@@ -1,5 +1,3 @@
-ADD source_relation WHERE NEEDED + CHECK JOINS AND WINDOW FUNCTIONS! (Delete this line when done.)
-
 {{ config(enabled=var('ad_reporting__linkedin_ads_enabled', True)) }}
 
 with account as (
@@ -49,7 +47,7 @@ final as (
         on campaign.account_id = account.account_id
         and campaign.source_relation = account.source_relation
 
-    {{ dbt_utils.group_by(n=9) }}
+    {{ dbt_utils.group_by(10) }}
 
 )
 
