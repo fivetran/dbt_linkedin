@@ -1,5 +1,20 @@
 # dbt_linkedin v0.8.0
 [PR #32](https://github.com/fivetran/dbt_linkedin/pull/32) includes the following updates:
+
+## Breaking changes
+- Updated the following identifiers for consistency with the source name and compatibility with the union schema feature:
+
+| current  | previous |
+|----------|----------|
+| linkedin_ads_account_history_identifier | linkedin_account_history_identifier
+| linkedin_ads_ad_analytics_by_creative_identifier | linkedin_ad_analytics_by_creative_identifier
+| linkedin_ads_campaign_group_history_identifier | linkedin_campaign_group_history_identifier
+| linkedin_ads_campaign_history_identifier | linkedin_campaign_history_identifier
+| linkedin_ads_creative_history_identifier | linkedin_creative_history_identifier
+| linkedin_ads_ad_analytics_by_campaign_identifier | linkedin_ad_analytics_by_campaign_identifier
+
+- If you are using the previous identifier, be sure to update to the current version!
+
 ## Feature update 🎉
 - Unioning capability! This adds the ability to union source data from multiple linkedin connectors. Refer to the [Union Multiple Connectors README section](https://github.com/fivetran/dbt_linkedin/blob/main/README.md#union-multiple-connectors) for more details.
 
