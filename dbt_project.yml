@@ -14,5 +14,5 @@ vars:
   linkedin_ads__campaign_passthrough_metrics: []
 models:
   linkedin:
-    +materialized: view
+    +materialized: table
     +schema: linkedin_ads
