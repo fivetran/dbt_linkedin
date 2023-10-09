@@ -2,6 +2,8 @@
 [PR #32](https://github.com/fivetran/dbt_linkedin/pull/32) includes the following updates:
 
 ## Breaking changes
+- Updated the name of the source created by `dbt_linkedin_source` from `linkedin` to `linkedin_ads`. This was to bring the naming used in this package in alignment with our other ad packages and fo compatibility with the union schema feature.
+  - ❗ If you are using this source, you will need to update the name.
 - Updated the following identifiers for consistency with the source name and compatibility with the union schema feature:
 
 | current  | previous |
