@@ -37,6 +37,7 @@ report as (
 final as (
 
     select 
+        report.source_relation,
         report.date_day,
         creative.click_uri,
         creative.base_url,
@@ -64,18 +65,22 @@ final as (
     from report 
     left join creative 
         on report.creative_id = creative.creative_id
+        and report.source_relation = creative.source_relation
     left join campaign 
         on creative.campaign_id = campaign.campaign_id
+        and creative.source_relation = campaign.source_relation
     left join campaign_group
         on campaign.campaign_group_id = campaign_group.campaign_group_id
+        and campaign.source_relation = campaign_group.source_relation
     left join account 
         on campaign.account_id = account.account_id
+        and campaign.source_relation = account.source_relation
 
     {% if var('ad_reporting__url_report__using_null_filter', True) %}
         where creative.click_uri is not null
     {% endif %}
 
-    {{ dbt_utils.group_by(n=18) }}
+    {{ dbt_utils.group_by(19) }}
 
 )
 

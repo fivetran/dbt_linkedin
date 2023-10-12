@@ -30,6 +30,7 @@ report as (
 final as (
 
     select 
+        report.source_relation,
         report.date_day,
         report.campaign_id,
         campaign.campaign_name,
@@ -68,12 +69,15 @@ final as (
     from report 
     left join campaign 
         on report.campaign_id = campaign.campaign_id
+        and report.source_relation = campaign.source_relation
     left join campaign_group
         on campaign.campaign_group_id = campaign_group.campaign_group_id
+        and campaign.source_relation = campaign_group.source_relation
     left join account 
         on campaign.account_id = account.account_id
+        and campaign.source_relation = account.source_relation
 
-    {{ dbt_utils.group_by(n=29) }}
+    {{ dbt_utils.group_by(30) }}
 
 )
 
