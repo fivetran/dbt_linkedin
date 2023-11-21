@@ -1,6 +1,6 @@
 packages:
   # - package: fivetran/linkedin_source
   #   version: [">=0.8.0", "<0.9.0"]
-  - git: https://github.com/fivetran/dbt_linkedin_sourcee.git
+  - git: https://github.com/fivetran/dbt_linkedin_source.git
     revision: bug/databricks-get-url-parameter
     warn-unpinned: false
