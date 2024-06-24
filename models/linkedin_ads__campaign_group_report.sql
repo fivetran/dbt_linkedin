@@ -49,6 +49,10 @@ final as (
 
         {{ fivetran_utils.persist_pass_through_columns('linkedin_ads__campaign_passthrough_metrics', transform='sum') }}
     
+        , sum(coalesce(report.conversion_value_in_local_currency)) as conversion_value_in_local_currency
+        
+        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform = 'sum', coalesce_with=0) }}
+
     from report 
     left join campaign 
         on report.campaign_id = campaign.campaign_id

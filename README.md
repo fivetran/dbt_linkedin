@@ -48,14 +48,14 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-## Step 2: Install the package
+## Step 2: Install the package (skip if also using the `ad_reporting` combination package)
 Include the following Linkedin Ads package version in your `packages.yml` file:
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages
 ```yml
 # packages.yml
 packages:
   - package: fivetran/linkedin
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 ```
 Do **NOT** include the `linkedin_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well. 
 
@@ -94,22 +94,37 @@ vars:
 ### Passing Through Additional Metrics
 By default, this package will select `clicks`, `impressions`, and `cost` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
 
->**Note** Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (taps, impressions, and spend) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
-
 ```yml
 # dbt_project.yml
 vars:
     linkedin_ads__campaign_passthrough_metrics: # pulls from ad_analytics_by_campaign
         - name: "new_custom_field"
-          alias: "custom_field"
+          alias: "custom_field_alias"
+          transform_sql: "coalesce(custom_field_alias, 0)" # reference the `alias` here if you are using one
         - name: "unique_int_field"
           alias: "field_id"
+        - name: "another_one"
+          transform_sql: "coalesce(another_one, 0)" # reference the `name` here if you're not using an alias
         - name: "that_field"
     linkedin_ads__creative_passthrough_metrics: # pulls from ad_analytics_by_creative
         - name: "new_custom_field"
           alias: "custom_field"
         - name: "unique_int_field"
 ```
+
+>**Note** Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, and spend) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
+
+### Adding in Conversion Fields Variable
+We introduced support for conversion fields in our `report` data models in the [v0.9.0 release](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.9.0) of the package, but customers might have been bringing in these conversion fields earlier using the passthrough fields variables. To avoid duplicate column errors, we have introduced the `linkedin_ads__conversion_fields` variable. 
+
+By default, these data models are set to bring in `external_website_conversions` and `one_click_leads`, the most used conversion fields. If you would like to modify which conversion fields you are bringing in, you can set them in the `dbt_project.yml`.
+
+```yml
+# dbt_project.yml
+vars:
+    linkedin_ads__conversion_fields: ['external_website_conversions', 'one_click_leads', 'external_website_post_click_conversions', 'landing_page_clicks']
+```
+
 ### Changing the Build Schema
 By default this package will build the LinkedIn Ad Analytics staging models within a schema titled (<target_schema> + `_linkedin_ads_source`) and the LinkedIn Ad Analytics final models within a schema titled (<target_schema> + `_linkedin_ads`) in your target database. If this is not where you would like your modeled LinkedIn data to be written to, add the following configuration to your `dbt_project.yml` file:
 
@@ -123,7 +138,8 @@ models:
 ```
 
 ### Change the source table references
-If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available when running the package on multiple unioned connectors.
+
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_linkedin/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
 ```yml
@@ -145,7 +161,7 @@ This dbt package is dependent on the following dbt packages. Please be aware tha
 ```yml
 packages:
     - package: fivetran/linkedin_source
-      version: [">=0.8.0", "<0.9.0"]
+      version: [">=0.9.0", "<0.10.0"]
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
     - package: dbt-labs/dbt_utils
