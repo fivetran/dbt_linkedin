@@ -52,7 +52,7 @@ final as (
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.cost) as cost,
-        sum(coalesce(report.conversion_value_in_local_currency)) as conversion_value_in_local_currency
+        sum(coalesce(report.conversion_value_in_local_currency, 0)) as conversion_value_in_local_currency
 
         {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform='sum', coalesce_with=0, except_variable='linkedin_ads__campaign_passthrough_metrics', exclude_fields=['conversion_value_in_local_currency']) }}
 
