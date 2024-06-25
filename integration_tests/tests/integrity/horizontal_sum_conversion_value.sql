@@ -41,7 +41,7 @@ url_report as (
 creative_w_url_report as (
 
     select 
-        sum(creative.conversion_value_in_local_currency) as total_value
+        sum(creatives.conversion_value_in_local_currency) as total_value
     from {{ ref('linkedin_ads__creative_report') }} creatives 
     join {{ ref('linkedin_ads__url_report') }} urls 
         on creatives.creative_id = urls.creative_id
@@ -74,6 +74,6 @@ union all
 
 select 
     'creative vs url' as comparison
-from creative_w_url_report
-join url_report on true
-where creative_report.total_value != campaign_report.total_value
+from creative_report
+join creative_w_url_report on true
+where creative_report.total_value != creative_w_url_report.total_value

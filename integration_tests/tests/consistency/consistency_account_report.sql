@@ -8,8 +8,8 @@ with prod as (
         account_id,
         sum(clicks) as clicks, 
         sum(impressions) as impressions,
-        sum(spend) as spend
-    from {{ target.schema }}_linkedin_ads_prod.linkedin_ads__account_report
+        sum(cost) as cost
+    from {{ target.schema }}_linkedin_prod.linkedin_ads__account_report
     group by 1
 ),
 
@@ -18,8 +18,8 @@ dev as (
         account_id,
         sum(clicks) as clicks, 
         sum(impressions) as impressions,
-        sum(spend) as spend
-    from {{ target.schema }}_linkedin_ads_dev.linkedin_ads__account_report
+        sum(cost) as cost
+    from {{ target.schema }}_linkedin_dev.linkedin_ads__account_report
     group by 1
 ),
 
@@ -30,8 +30,8 @@ final as (
         dev.clicks as dev_clicks,
         prod.impressions as prod_impressions,
         dev.impressions as dev_impressions,
-        prod.spend as prod_spend,
-        dev.spend as dev_spend
+        prod.cost as prod_cost,
+        dev.cost as dev_cost
     from prod
     full outer join dev 
         on dev.account_id = prod.account_id
@@ -42,4 +42,4 @@ from final
 where
     abs(prod_clicks - dev_clicks) >= .01
     or abs(prod_impressions - dev_impressions) >= .01
-    or abs(prod_spend - dev_spend) >= .01
+    or abs(prod_cost - dev_cost) >= .01

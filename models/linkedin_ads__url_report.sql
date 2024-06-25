@@ -30,7 +30,12 @@ account as (
 
 report as (
 
-    select *
+    select *,
+        {% if var('linkedin_ads__conversion_fields', none) %}
+            {{ var('linkedin_ads__conversion_fields') | join(' + ') }} as total_conversions
+        {% else %}
+            0 as total_conversions
+        {% endif %}
     from {{ var('ad_analytics_by_creative') }}
 ),
 
@@ -56,6 +61,7 @@ final as (
         account.account_id,
         account.account_name,
         account.currency,
+        report.total_conversions,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.cost) as cost,
@@ -83,7 +89,7 @@ final as (
         where creative.click_uri is not null
     {% endif %}
 
-    {{ dbt_utils.group_by(19) }}
+    {{ dbt_utils.group_by(20) }}
 
 )
 

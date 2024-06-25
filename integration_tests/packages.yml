@@ -1,3 +1,2 @@
 packages:
-  - package: fivetran/linkedin
-    version: '>=0.0.0'
+  - local: ../
