@@ -58,13 +58,12 @@ final as (
         account.currency,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
-        sum(report.cost) as cost
+        sum(report.cost) as cost,
+        sum(coalesce(report.conversion_value_in_local_currency)) as conversion_value_in_local_currency
+
+        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform='sum', coalesce_with=0, except_variable='linkedin_ads__creative_passthrough_metrics', exclude_fields=['conversion_value_in_local_currency']) }}
 
         {{ fivetran_utils.persist_pass_through_columns('linkedin_ads__creative_passthrough_metrics', transform='sum') }}
-    
-        , sum(coalesce(report.conversion_value_in_local_currency)) as conversion_value_in_local_currency
-
-        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform = 'sum', coalesce_with=0) }}
 
     from report 
     left join creative 

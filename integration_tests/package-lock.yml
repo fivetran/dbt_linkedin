@@ -1,11 +1,12 @@
 packages:
-- local: ../
-- git: https://github.com/fivetran/dbt_linkedin_source.git
-  revision: e395ca42719aede354b17f5bcf6469147ec5b301
+- package: fivetran/linkedin
+  version: 0.8.0
+- package: fivetran/linkedin_source
+  version: 0.8.2
 - package: fivetran/fivetran_utils
   version: 0.4.10
 - package: dbt-labs/spark_utils
   version: 0.3.0
 - package: dbt-labs/dbt_utils
   version: 1.2.0
-sha1_hash: de2deba3d66ce03d8c02949013650cc9b94f6030
+sha1_hash: 3d333882af9003b30219a39650bd7100180e0cf0
