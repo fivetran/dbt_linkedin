@@ -91,7 +91,7 @@ vars:
     linkedin_ads__use_local_currency: True # false by default -- uses USD
 ```
 
-Note: It should be noted that conversions are only reported in the local currency.
+Note: It should be noted that conversions are only reported in the local currency and are brought into our models as `conversion_value_in_local_currency`.
 
 ### Passing Through Additional Metrics
 By default, this package will select `clicks`, `impressions`, and `cost` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
