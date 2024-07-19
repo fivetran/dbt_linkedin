@@ -61,7 +61,7 @@ final as (
         account.account_id,
         account.account_name,
         account.currency,
-        report.total_conversions,
+        sum(report.total_conversions) as total_conversions,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.cost) as cost,
@@ -89,7 +89,7 @@ final as (
         where creative.click_uri is not null
     {% endif %}
 
-    {{ dbt_utils.group_by(20) }}
+    {{ dbt_utils.group_by(19) }}
 
 )
 

@@ -48,7 +48,7 @@ final as (
         campaign_group.run_schedule_end_at,
         campaign_group.last_modified_at,
         campaign_group.created_at,
-        report.total_conversions,
+        sum(report.total_conversions) as total_conversions,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.cost) as cost,
@@ -69,7 +69,7 @@ final as (
         on campaign.account_id = account.account_id
         and campaign.source_relation = account.source_relation
 
-    {{ dbt_utils.group_by(14) }}
+    {{ dbt_utils.group_by(13) }}
 
 )
 

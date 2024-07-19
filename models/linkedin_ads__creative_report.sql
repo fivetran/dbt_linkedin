@@ -58,7 +58,7 @@ final as (
         account.currency,
         creative.last_modified_at,
         creative.created_at,
-        report.total_conversions,
+        sum(report.total_conversions) as total_conversions,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.cost) as cost,
@@ -82,7 +82,7 @@ final as (
         on campaign.account_id = account.account_id
         and campaign.source_relation = account.source_relation
 
-    {{ dbt_utils.group_by(17) }}
+    {{ dbt_utils.group_by(16) }}
 
 )
 

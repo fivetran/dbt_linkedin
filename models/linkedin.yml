@@ -67,6 +67,12 @@ models:
       - name: total_conversions
         description: The total conversions being brought in the conversion fields you select in your `linkedin_ads__conversion_fields`.
 
+      - name: external_website_conversions
+        description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
+
+      - name: one_click_leads
+        description: Leads submitted after clicking on LinkedIn ads.
+
   - name: linkedin_ads__campaign_report
     description: Each record in this table represents the daily performance of ads at the campaign level.
     tests:
@@ -228,6 +234,12 @@ models:
       - name: total_conversions
         description: The total conversions being brought in the conversion fields you select in your `linkedin_ads__conversion_fields`.
 
+      - name: external_website_conversions
+        description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
+      
+      - name: one_click_leads
+        description: Leads submitted after clicking on LinkedIn ads.
+
   - name: linkedin_ads__campaign_group_report
     description: Each record in this table represents the daily performance of ads at the campaign group level.
     tests:
@@ -303,6 +315,12 @@ models:
 
       - name: total_conversions
         description: The total conversions being brought in the conversion fields you select in your `linkedin_ads__conversion_fields`.
+
+      - name: external_website_conversions
+        description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
+      
+      - name: one_click_leads
+        description: Leads submitted after clicking on LinkedIn ads.
 
   - name: linkedin_ads__creative_report
     description: Each record in this table represents the daily performance of ads at the creative level.
@@ -406,6 +424,12 @@ models:
       - name: total_conversions
         description: The total conversions being brought in the conversion fields you select in your `linkedin_ads__conversion_fields`.
 
+      - name: external_website_conversions
+        description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
+      
+      - name: one_click_leads
+        description: Leads submitted after clicking on LinkedIn ads.
+
   - name: linkedin_ads__url_report
     description: Each record in this table represents the daily performance of ads at the url level.
     tests:
@@ -503,3 +527,9 @@ models:
 
       - name: total_conversions
         description: The total conversions being brought in the conversion fields you select in your `linkedin_ads__conversion_fields`.
+
+      - name: external_website_conversions
+        description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
+      
+      - name: one_click_leads
+        description: Leads submitted after clicking on LinkedIn ads.

@@ -9,7 +9,7 @@
     {% endfor %}
 {% endif %}
 
-{% for field in additional_exclude_fields %}
+{% for field in exclude_fields %}
     {% do except_fields.append(field) %}
 {% endfor %}
 
