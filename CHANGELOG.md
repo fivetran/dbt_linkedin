@@ -8,6 +8,7 @@ We have added more robust support for conversions in our data models by doing th
   - Set current variable defaults in the `dbt_project.yml` to bring in the most used conversion fields `external_website_conversions` and `one_click_leads` by default.
   - Instructions on how to set your own fields [are available in the README](https://github.com/fivetran/dbt_linkedin/blob/main/README.md#adding-in-conversion-fields-variable).
 - Adds a `total_conversions` metric in our end models to track all conversions being brought in by the `linkedin_ads_conversion_fields` variable.
+
 > The above new field additions are 🚨 **breaking changes** 🚨.
 
 
