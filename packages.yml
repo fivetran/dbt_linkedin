@@ -1,7 +1,3 @@
 packages:
-  # - package: fivetran/linkedin_source
-  #   version: [">=0.9.0", "<0.10.0"]
-
-  - git: https://github.com/fivetran/dbt_linkedin_source.git
-    revision: feature/add-conversions-to-linkedin-ads
-    warn-unpinned: false
+  - package: fivetran/linkedin_source
+    version: [">=0.9.0", "<0.10.0"]
