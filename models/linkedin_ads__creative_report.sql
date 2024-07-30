@@ -30,7 +30,12 @@ account as (
 
 report as (
 
-    select *
+    select *,
+        {% if var('linkedin_ads__conversion_fields', none) %}
+            {{ var('linkedin_ads__conversion_fields') | join(' + ') }} as total_conversions
+        {% else %}
+            0 as total_conversions
+        {% endif %}
     from {{ var('ad_analytics_by_creative') }}
 ),
 
@@ -53,9 +58,13 @@ final as (
         account.currency,
         creative.last_modified_at,
         creative.created_at,
+        sum(report.total_conversions) as total_conversions,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
-        sum(report.cost) as cost
+        sum(report.cost) as cost,
+        sum(coalesce(report.conversion_value_in_local_currency, 0)) as conversion_value_in_local_currency  
+
+        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform='sum', coalesce_with=0, except_variable='linkedin_ads__creative_passthrough_metrics', exclude_fields=['conversion_value_in_local_currency']) }}
 
         {{ fivetran_utils.persist_pass_through_columns('linkedin_ads__creative_passthrough_metrics', transform='sum') }}
     

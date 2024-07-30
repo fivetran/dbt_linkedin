@@ -1,3 +1,4 @@
 dbt_modules/
 target/
 logs/
+package-lock.yml

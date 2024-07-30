@@ -1,3 +1,30 @@
+# dbt_linkedin v0.9.0
+[PR #36](https://github.com/fivetran/dbt_linkedin/pull/36) includes the following updates:
+
+## Feature Updates: Conversion Support!
+We have added more robust support for conversions in our data models by doing the following: 
+- Adds a `conversion_value_by_local_currency` field to each `_report` end model, representing the value of conversions that occurred on each day for each campaign/campaign_group/creative/url/account.
+- Created a `linkedin_ads__conversion_fields` variable to pass through and transform additional conversion value metrics into their aggregate sums.
+  - Set current variable defaults in the `dbt_project.yml` to bring in the most used conversion fields `external_website_conversions` and `one_click_leads` by default.
+  - Instructions on how to set your own fields [are available in the README](https://github.com/fivetran/dbt_linkedin/blob/main/README.md#adding-in-conversion-fields-variable).
+- Adds a `total_conversions` metric in our end models to track all conversions being brought in by the `linkedin_ads_conversion_fields` variable.
+> The above new field additions are 🚨 **breaking changes** 🚨.
+
+## Documentation Update 
+- Documents how to set your own passthrough fields with the variable `linkedin_ads__conversion_fields` [in the README](https://github.com/fivetran/dbt_linkedin_source/blob/main/README.md#adding-in-conversion-fields-variable).
+- [Created a DECISIONLOG](https://github.com/fivetran/dbt_linkedin/blob/main/DECISIONLOG.md#best-practices-with-configuring-linkedin-ads-conversion-fields-variable) to describe best practices in configuring the `linkedin_ads__conversion_fields` variable. 
+
+## Under the Hood
+- Added a new [version](https://github.com/fivetran/dbt_linkedin_ads/blob/main/macros/linkedin_ads_persist_pass_through_columns.sql) of the `persist_pass_through_columns()` [macro](https://github.com/fivetran/dbt_fivetran_utils/blob/v0.4.10/macros/persist_pass_through_columns.sql) in which we can include `coalesces` and properly check between conversion field values and the existing passthrough column.
+- Updated the PR templates to align with our most up-to-date standards.
+- Included auto-releaser GitHub Actions workflow to automate future releases.
+- Addition of integrity and consistency validation tests within `integration_tests` for the Linkedin transformation models.
+- Updated `linkedin_ad_analytics_by_creative_data` seed file with relevant conversion fields for more robust testing. 
+
+## Contributors
+- [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)
+
+
 # dbt_linkedin v0.8.0
 [PR #32](https://github.com/fivetran/dbt_linkedin/pull/32) includes the following updates:
 
