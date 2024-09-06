@@ -8,3 +8,11 @@ destination_configurations:
     dispatch:
       - macro_namespace: dbt_utils
         search_order: [ 'spark_utils', 'dbt_utils' ]
+
+public_models: [
+  "linkedin_ads__campaign_group_report",
+  "linkedin_ads__creative_report",
+  "linkedin_ads__campaign_report",
+  "linkedin_ads__account_report",
+  "linkedin_ads__url_report"
+]
