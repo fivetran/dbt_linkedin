@@ -45,6 +45,7 @@ final as (
         report.source_relation,
         report.date_day,
         creative.click_uri,
+        creative.click_uri_type,
         creative.base_url,
         creative.url_host,
         creative.url_path,
@@ -89,7 +90,7 @@ final as (
         where creative.click_uri is not null
     {% endif %}
 
-    {{ dbt_utils.group_by(19) }}
+    {{ dbt_utils.group_by(20) }}
 
 )
 

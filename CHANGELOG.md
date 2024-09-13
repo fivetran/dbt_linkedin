@@ -1,5 +1,5 @@
 # dbt_linkedin v0.10.0
-[PR #TBD](https://github.com/fivetran/dbt_linkedin/pull/TBD) includes the following updates:
+[PR #38](https://github.com/fivetran/dbt_linkedin/pull/38) includes the following updates:
 
 ## Breaking Changes
 - The `click_uri_type` field has been added to the below mentioned models. This field allows users to differentiate which click_uri type (`text_ad` or `spotlight`) is being used to populate the results of the `click_uri` field.

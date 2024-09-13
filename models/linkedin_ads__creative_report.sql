@@ -52,6 +52,7 @@ final as (
         account.account_id,
         account.account_name,
         creative.click_uri,
+        creative.click_uri_type,
         creative.status as creative_status,
         campaign.status as campaign_status,
         campaign_group.status as campaign_group_status,
@@ -82,7 +83,7 @@ final as (
         on campaign.account_id = account.account_id
         and campaign.source_relation = account.source_relation
 
-    {{ dbt_utils.group_by(16) }}
+    {{ dbt_utils.group_by(17) }}
 
 )
 
