@@ -1,3 +1,25 @@
+# dbt_linkedin v0.10.0
+[PR #TBD](https://github.com/fivetran/dbt_linkedin/pull/TBD) includes the following updates:
+
+## Breaking Changes
+- The `click_uri_type` field has been added to the below mentioned models. This field allows users to differentiate which click_uri type (`text_ad` or `spotlight`) is being used to populate the results of the `click_uri` field.
+  - `stg_linkedin_ads__creative_history`
+  - `linkedin_ads__creative_report`
+  - `linkedin_ads__url_report`
+
+## Bug Fixes (upstream dbt_linkedin_source change)
+- The `click_uri` field has been adjusted to populate the results following a coalesce on the `text_ad_landing_page`, `spotlight_landing_page`, or `click_uri` fields. For more details refer to [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) release notes.
+  - This change is in response to a [LinkedIn Ads API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/contentapi-migration-guide?view=li-lms-2024-05#adcreativesv2-api-creatives-api) and [Fivetran LinkedIn Ads connector update](https://fivetran.com/docs/connectors/applications/linkedin-ads/changelog#january2024) which moved `click_uri` data to either the `text_ad_landing_page` or `spotlight_landing_page` fields depending on the creative type.
+
+## Documentation Updates
+- The `click_uri` field documentation has been updated to reflect the updated state of the field.
+- Included a new `DECISIONLOG.md` entry to highlight why it's possible metrics don't add up across different grains.
+
+## Under the Hood
+- Updates to the `linkedin_creative_history_data` seed file to include the following new fields to ensure accurate data validation tests:
+  - `text_ad_landing_page`
+  - `spotlight_landing_page`
+
 # dbt_linkedin v0.9.0
 [PR #36](https://github.com/fivetran/dbt_linkedin/pull/36) includes the following updates:
 
