@@ -1,3 +1,6 @@
+# dbt_linkedin v0.9.1
+TBD
+
 # dbt_linkedin v0.9.0
 [PR #36](https://github.com/fivetran/dbt_linkedin/pull/36) includes the following updates:
 
