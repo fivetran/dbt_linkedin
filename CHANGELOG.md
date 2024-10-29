@@ -1,5 +1,8 @@
 # dbt_linkedin v0.9.1
-TBD
+[PR #41](https://github.com/fivetran/dbt_linkedin/pull/41) includes the following update:
+
+## Bug Fix
+- Ensures that the recent addition of conversions (see v0.9.0 below) is indeed backwards compatible with users already including `conversion_value_by_local_currency` as a passthrough column.
 
 # dbt_linkedin v0.9.0
 [PR #36](https://github.com/fivetran/dbt_linkedin/pull/36) includes the following updates:
