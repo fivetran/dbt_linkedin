@@ -5,7 +5,7 @@
 
 with prod as (
     select
-        account_id,
+        creative_id,
         sum(clicks) as clicks, 
         sum(impressions) as impressions,
         sum(cost) as cost,
@@ -17,7 +17,7 @@ with prod as (
 
 dev as (
     select
-        account_id,
+        creative_id,
         sum(clicks) as clicks, 
         sum(impressions) as impressions,
         sum(cost) as cost,
@@ -29,7 +29,7 @@ dev as (
 
 final as (
     select 
-        prod.account_id,
+        prod.creative_id,
         prod.clicks as prod_clicks,
         dev.clicks as dev_clicks,
         prod.impressions as prod_impressions,
@@ -42,7 +42,7 @@ final as (
         dev.conversion_value_in_local_currency as dev_conversion_value_in_local_currency
     from prod
     full outer join dev 
-        on dev.account_id = prod.account_id
+        on dev.creative_id = prod.creative_id
 )
 
 select *
