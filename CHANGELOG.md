@@ -19,6 +19,7 @@
 - Updates to the `linkedin_creative_history_data` seed file to include the following new fields to ensure accurate data validation tests:
   - `text_ad_landing_page`
   - `spotlight_landing_page`
+  
 # dbt_linkedin v0.9.1
 [PR #41](https://github.com/fivetran/dbt_linkedin/pull/41) includes the following updates:
 
