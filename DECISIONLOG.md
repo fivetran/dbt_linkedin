@@ -22,3 +22,8 @@ vars:
 ```
 
 `external_website_pre_click_conversions` and `external_website_post_click_conversions` are two different type of external website conversions, so there should be no overlap. 
+
+## Why don't metrics add up across different grains (Ex. ad level vs campaign level)?
+Not all ads are served at the ad level. Some are delivered only at higher levels like the ad group or campaign. As a result, metrics like spend may differ across levels since not all ads are captured in ad-level reports.
+
+To ensure data completeness, we separate reporting into hierarchical models (Ad, Ad Group, Campaign, etc.). Relying solely on ad-level reports could result in missing data from other levels.
