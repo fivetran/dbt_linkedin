@@ -4,6 +4,7 @@
 
 {% set except_fields = [] %}
 {% if except_variable is not none %}
+    {# Start creating list of fields to exclude #}
     {% for item in var(except_variable) %}
         {% do except_fields.append(item.name) %}
     {% endfor %}
@@ -15,9 +16,12 @@
 
 {% if var(pass_through_variable, none) %}
     {% for field in var(pass_through_variable) %}
-        {% if field not in except_fields %}
-        , {{ transform ~ '(' ~ ('coalesce(' if coalesce_with is not none else '') ~ (identifier ~ '.' if identifier else '') ~ field ~ ((', ' ~ coalesce_with ~ ')') if coalesce_with is not none else '') ~ ')' }} as {{ field }}
+    {% set field_name = field.alias|default(field.name)|lower if field is mapping else field|lower %}
+    
+        {% if field_name not in except_fields %}
+        , {{ transform ~ '(' ~ ('coalesce(' if coalesce_with is not none else '') ~ (identifier ~ '.' if identifier else '') ~ field_name ~ ((', ' ~ coalesce_with ~ ')') if coalesce_with is not none else '') ~ ')' }} as {{ field_name }}
         {% endif %}
+
     {% endfor %}
 {% endif %}
 

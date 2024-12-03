@@ -56,7 +56,7 @@ final as (
 
         {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform='sum', coalesce_with=0, except_variable='linkedin_ads__campaign_passthrough_metrics', exclude_fields=['conversion_value_in_local_currency']) }}
 
-        {{ fivetran_utils.persist_pass_through_columns('linkedin_ads__campaign_passthrough_metrics', transform='sum') }}
+        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__campaign_passthrough_metrics', transform='sum', exclude_fields=['conversion_value_in_local_currency']) }}
 
     from report 
     left join campaign 
