@@ -3,7 +3,7 @@
 
 ## Breaking Changes
 - The `click_uri_type` field has been added to the below mentioned models. This field allows users to differentiate which click uri type (`text_ad` or `spotlight`) is being used to populate the results of the `click_uri` field. Please be aware this field only supports `text_ad` or `spotlight` click uri types. If you are interested in this package supporting more click uri ad types, please let us know in this [Feature Request](https://github.com/fivetran/dbt_linkedin_source/issues/70).
-  - `stg_linkedin_ads__creative_history`
+  - `stg_linkedin_ads__creative_history` (in the `dbt_linkedin_source` package)
   - `linkedin_ads__creative_report`
   - `linkedin_ads__url_report`
 
