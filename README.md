@@ -32,6 +32,7 @@ The following table provides a detailed list of all tables materialized within t
 | [linkedin_ads__campaign_group_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_group_report.sql) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
 | [linkedin_ads__creative_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__creative_report.sql) | Each record represents the daily ad performance of each creative.                                                |
 | [linkedin_ads__url_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__url_report.sql) | Each record represents the daily ad performance of each url.                                                |
+
 ### Materialized Models
 Each Quickstart transformation job run materializes 17 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
@@ -39,7 +40,7 @@ Each Quickstart transformation job run materializes 17 models if all components 
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran Linkedin Ad Analytics onnector syncing data into your destination.
+- At least one Fivetran Linkedin Ad Analytics connection syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
 
 #### Databricks Dispatch Configuration
