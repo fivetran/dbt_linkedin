@@ -32,12 +32,15 @@ The following table provides a detailed list of all tables materialized within t
 | [linkedin_ads__campaign_group_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__campaign_group_report.sql) | Each record represents the daily ad performance of each campaign group. Linkedin                                                 |
 | [linkedin_ads__creative_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__creative_report.sql) | Each record represents the daily ad performance of each creative.                                                |
 | [linkedin_ads__url_report](https://github.com/fivetran/dbt_linkedin/blob/main/models/linkedin_ads__url_report.sql) | Each record represents the daily ad performance of each url.                                                |
+
+### Materialized Models
+Each Quickstart transformation job run materializes 17 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran Linkedin Ad Analytics onnector syncing data into your destination.
+- At least one Fivetran Linkedin Ad Analytics connection syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
 
 #### Databricks Dispatch Configuration
@@ -70,8 +73,8 @@ vars:
 ```
 
 ### (Optional) Step 4: Additional configurations
-#### Union multiple connectors
-If you have multiple linkedin connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `linkedin_ads_union_schemas` OR `linkedin_ads_union_databases` variables (cannot do both) in your root `dbt_project.yml` file:
+#### Union multiple connections
+If you have multiple linkedin connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `linkedin_ads_union_schemas` OR `linkedin_ads_union_databases` variables (cannot do both) in your root `dbt_project.yml` file:
 
 ```yml
 vars:
@@ -144,7 +147,7 @@ models:
 ```
 
 #### Change the source table references
-If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available when running the package on multiple unioned connectors.
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available when running the package on multiple unioned connections.
 
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_linkedin/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
