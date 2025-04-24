@@ -1,6 +1,6 @@
 # dbt_linkedin v0.11.0
 
-PR # includes the following updates:
+[PR #44](https://github.com/fivetran/dbt_linkedin/pull/44) includes the following updates:
 
 ## Schema Changes
 **8 total changes • 0 possible breaking changes
