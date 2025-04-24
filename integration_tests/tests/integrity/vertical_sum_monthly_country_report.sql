@@ -12,7 +12,7 @@ with staging as (
         sum(impressions) as total_impressions,
         sum(clicks) as total_clicks, 
         sum(cost) as total_cost, 
-        sum(conversion_value_in_local_currency) as total_conversion_value,
+        sum(conversion_value_in_local_currency) as total_conversion_value
     from {{ ref('stg_linkedin_ads__monthly_ad_analytics_by_country') }}
     group by 1, 2
 ),
@@ -26,7 +26,7 @@ end_model as (
         sum(impressions) as total_impressions,
         sum(clicks) as total_clicks, 
         sum(cost) as total_cost, 
-        sum(conversion_value_in_local_currency) as total_conversion_value,
+        sum(conversion_value_in_local_currency) as total_conversion_value
     from {{ ref('linkedin_ads__monthly_campaign_country_report') }}
     group by 1, 2
 ),

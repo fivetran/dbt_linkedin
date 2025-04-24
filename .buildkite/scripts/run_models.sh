@@ -19,6 +19,6 @@ dbt deps
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
-dbt run --vars '{linkedin_ads__use_local_currency: true, ad_reporting__url_report__using_null_filter: false, , linkedin_ads__using_geo: False, linkedin_ads__using_monthly_ad_analytics_by_member_country: False, linkedin_ads__using_monthly_ad_analytics_by_member_region: False}' --target "$db" --full-refresh
-dbt test --vars '{linkedin_ads__use_local_currency: true, ad_reporting__url_report__using_null_filter: false, , linkedin_ads__using_geo: False, linkedin_ads__using_monthly_ad_analytics_by_member_country: False, linkedin_ads__using_monthly_ad_analytics_by_member_region: False}' --target "$db"
+dbt run --vars '{linkedin_ads__use_local_currency: true, ad_reporting__url_report__using_null_filter: false, linkedin_ads__using_geo: False, linkedin_ads__using_monthly_ad_analytics_by_member_country: False, linkedin_ads__using_monthly_ad_analytics_by_member_region: False}' --target "$db" --full-refresh
+dbt test --vars '{linkedin_ads__use_local_currency: true, ad_reporting__url_report__using_null_filter: false, linkedin_ads__using_geo: False, linkedin_ads__using_monthly_ad_analytics_by_member_country: False, linkedin_ads__using_monthly_ad_analytics_by_member_region: False}' --target "$db"
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"
