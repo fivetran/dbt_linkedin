@@ -1,8 +1,31 @@
-# dbt_linkedin version.version
+# dbt_linkedin v0.11.0
+
+PR # includes the following updates:
+
+## Schema Changes
+**8 total changes • 0 possible breaking changes
+| Table/Column                                      | Change Type | Old Name | New Name                                  | Notes                                                             |
+|---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
+| linkedin_ads__monthly_campaign_country_report       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the country level.               |
+| linkedin_ads__monthly_campaign_region_report       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the region level.              |
+| stg_tiktok_ads__geo_tmp       | New temp model   |          |  | Temp model added for `geo`.               |
+| stg_tiktok_ads__geo          | New staging model   |          |    | Staging model added for `geo`.         |
+| stg_linkedin_ads__monthly_ad_analytics_by_country_tmp          | New temp model   |          |    | Temp model added for `monthly_ad_analytics_by_member_country`.         |
+| stg_linkedin_ads__monthly_ad_analytics_by_country          | New staging model   |          |    | Staging model added for `monthly_ad_analytics_by_member_country`.         |
+| stg_linkedin_ads__monthly_ad_analytics_by_region_tmp          | New temp model   |          |    | Temp model added for `monthly_ad_analytics_by_member_region`. Name shortened for warehouse table name length compatibility.         |
+| stg_linkedin_ads__monthly_ad_analytics_by_region          | New staging model   |          |    | Staging model added for `monthly_ad_analytics_by_member_region`. Name shortened for warehouse table name length compatibility.           |
+
+## Feature Updates
+- Added the `geo`, `monthly_ad_analytics_by_member_country` and `monthly_ad_analytics_by_member_region` source tables and downstream staging models. See above for schema change details and new models added.
+  - For dbt Core users: If you do not sync these tables or would like disable these new models you can disable the models by setting the any of the `linkedin_ads__using_geo`, `linkedin_ads__using_monthly_ad_analytics_by_member_country`, or `linkedin_ads__using_monthly_ad_analytics_by_member_region` variables to `false` in your `dbt_project.yml` file (`true` by default).
+- Included the `linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics` and `linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics` passthrough variables in the above mentioned new staging models. Refer to the [README](https://github.com/fivetran/dbt_linkedin_source/tree/main?tab=readme-ov-file#passing-through-additional-metrics) for more details.
 
 ## Documentation
 - Added Quickstart model counts to README. ([#43](https://github.com/fivetran/dbt_linkedin/pull/43))
 - Corrected references to connectors and connections in the README. ([#43](https://github.com/fivetran/dbt_linkedin/pull/43))
+
+## Under the Hood
+- Added vertical integrity test to ensure data accuracy of the new `linkedin_ads__monthly_campaign_country_report` and `linkedin_ads__monthly_campaign_region_report` models.
 
 # dbt_linkedin v0.10.0
 [PR #38](https://github.com/fivetran/dbt_linkedin/pull/38) includes the following updates:

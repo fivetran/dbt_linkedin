@@ -1,5 +1,5 @@
 name: 'linkedin_integration_tests'
-version: '0.10.0'
+version: '0.11.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -11,6 +11,9 @@ vars:
     linkedin_ads_campaign_history_identifier: "linkedin_campaign_history_data"
     linkedin_ads_creative_history_identifier: "linkedin_creative_history_data"
     linkedin_ads_ad_analytics_by_campaign_identifier: "linkedin_ad_analytics_by_campaign_data"
+    linkedin_ads_geo_identifier: "linkedin_geo_data"
+    linkedin_ads_monthly_ad_analytics_by_member_country_identifier: "linkedin_monthly_ad_analytics_by_member_country_data"
+    linkedin_ads_monthly_ad_analytics_by_member_region_identifier: "linkedin_monthly_ad_analytics_by_member_region_data"
 
     linkedin_ads__campaign_passthrough_metrics: []
     linkedin_ads__creative_passthrough_metrics:
@@ -21,6 +24,8 @@ models:
   +schema: "linkedin_{{ var('directed_schema','dev') }}"
 
 seeds:
+  +docs:
+    show: false
   linkedin_integration_tests:
     linkedin_creative_history_data:
       +column_types:
@@ -46,7 +51,15 @@ seeds:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
-        
+    linkedin_monthly_ad_analytics_by_member_country_data:
+      +column_types:
+        cost_in_local_currency: numeric
+        cost_in_usd: numeric
+    linkedin_monthly_ad_analytics_by_member_region_data:
+      +column_types:
+        cost_in_local_currency: numeric
+        cost_in_usd: numeric
+
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
