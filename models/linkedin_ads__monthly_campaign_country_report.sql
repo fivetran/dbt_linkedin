@@ -79,9 +79,9 @@ final as (
         sum(report.cost) as cost,
         sum(coalesce(report.conversion_value_in_local_currency, 0)) as conversion_value_in_local_currency
 
-        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform='sum', coalesce_with=0, except_variable='linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics', exclude_fields=['conversion_value_in_local_currency']) }}
+        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__conversion_fields', transform='sum', coalesce_with=0) }}
         
-        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics', transform='sum', exclude_fields=['conversion_value_in_local_currency']) }}
+        {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics', transform='sum') }}
 
     from report 
     left join geo
