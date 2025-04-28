@@ -4,7 +4,7 @@
 
 ## Schema Changes
 **8 total changes • 0 possible breaking changes
-| Table/Column                                      | Change Type | Old Name | New Name                                  | Notes                                                             |
+| Data Model                                    | Change Type | Old Name | New Name                                  | Notes                                                             |
 |---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
 | [linkedin_ads__monthly_campaign_country_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__monthly_campaign_country_report)       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the country level.               |
 | [linkedin_ads__monthly_campaign_region_report]((https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__monthly_campaign_region_report))       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the region level.              |
