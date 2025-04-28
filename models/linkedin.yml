@@ -562,9 +562,6 @@ models:
         tests:
           - not_null
 
-      - name: member_country
-        description: ID representing the country of the LinkedIn members who interacted with the campaign.
-
       - name: country_name
         description: Name of the country.
 
@@ -677,7 +674,7 @@ models:
           PENDING_DELETION - Denotes that the campaign has been requested to be deleted that is currently pending.
           REMOVED - Denotes that the campaign was deleted, but must remain fetchable due to the existence of performance data.
 
-      - name: type
+      - name: campaign_type
         description: |
           TEXT_AD - Text-based ads that show up in the right column or top of the page on LinkedIn.
           SPONSORED_UPDATES - Native ads that promote a company's content updates in the LinkedIn feed.
@@ -695,7 +692,7 @@ models:
           Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account. 
           ISO currency code.
 
-      - name: currency
+      - name: account_currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
 
       - name: conversion_value_in_local_currency
@@ -848,7 +845,7 @@ models:
           PENDING_DELETION - Denotes that the campaign has been requested to be deleted that is currently pending.
           REMOVED - Denotes that the campaign was deleted, but must remain fetchable due to the existence of performance data.
 
-      - name: type
+      - name: campaign_type
         description: |
           TEXT_AD - Text-based ads that show up in the right column or top of the page on LinkedIn.
           SPONSORED_UPDATES - Native ads that promote a company's content updates in the LinkedIn feed.
@@ -866,7 +863,7 @@ models:
           Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account. 
           ISO currency code.
 
-      - name: currency
+      - name: account_currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
 
       - name: conversion_value_in_local_currency

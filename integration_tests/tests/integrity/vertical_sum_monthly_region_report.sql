@@ -1,12 +1,11 @@
 {{ config(
     tags="fivetran_validations",
-    enabled=fivetran_utils.enabled_vars(['ad_reporting__linkedin_ads_enabled','linkedin_ads__using_geo','linkedin_ads__using_monthly_ad_analytics_by_member_region'])
+    enabled=var('fivetran_validation_tests_enabled', false) and fivetran_utils.enabled_vars(['ad_reporting__linkedin_ads_enabled','linkedin_ads__using_geo','linkedin_ads__using_monthly_ad_analytics_by_member_region'])
 ) }}
 
 with staging as (
     select 
         campaign_id,
-        member_region,
         count(campaign_id) as count_campaign,
         count(distinct date_month) as count_unique_months,
         sum(impressions) as total_impressions,
@@ -14,13 +13,12 @@ with staging as (
         sum(cost) as total_cost, 
         sum(conversion_value_in_local_currency) as total_conversion_value
     from {{ ref('stg_linkedin_ads__monthly_ad_analytics_by_region') }}
-    group by 1, 2
+    group by 1
 ),
 
 end_model as (
     select 
         campaign_id,
-        member_region,
         count(campaign_id) as count_campaign,
         count(distinct date_month) as count_unique_months,
         sum(impressions) as total_impressions,
@@ -28,13 +26,12 @@ end_model as (
         sum(cost) as total_cost, 
         sum(conversion_value_in_local_currency) as total_conversion_value
     from {{ ref('linkedin_ads__monthly_campaign_region_report') }}
-    group by 1, 2
+    group by 1
 ),
 
 combined as (
     select 
         end_model.campaign_id,
-        end_model.member_region,
         end_model.count_campaign as end_count_campaign,
         staging.count_campaign as staging_count_campaign,
         end_model.count_unique_months as end_count_unique_months,
@@ -50,7 +47,6 @@ combined as (
     from end_model
     full outer join staging
         on end_model.campaign_id = staging.campaign_id
-        and end_model.member_region = staging.member_region
 )
 
 select *

@@ -6,8 +6,8 @@
 **8 total changes • 0 possible breaking changes
 | Table/Column                                      | Change Type | Old Name | New Name                                  | Notes                                                             |
 |---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
-| linkedin_ads__monthly_campaign_country_report       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the country level.               |
-| linkedin_ads__monthly_campaign_region_report       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the region level.              |
+| [linkedin_ads__monthly_campaign_country_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__monthly_campaign_country_report)       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the country level.               |
+| [linkedin_ads__monthly_campaign_region_report]((https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__monthly_campaign_region_report))       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the region level.              |
 | stg_tiktok_ads__geo_tmp       | New temp model   |          |  | Temp model added for `geo`.               |
 | stg_tiktok_ads__geo          | New staging model   |          |    | Staging model added for `geo`.         |
 | stg_linkedin_ads__monthly_ad_analytics_by_country_tmp          | New temp model   |          |    | Temp model added for `monthly_ad_analytics_by_member_country`.         |
@@ -17,7 +17,7 @@
 
 ## Feature Updates
 - Added the `geo`, `monthly_ad_analytics_by_member_country` and `monthly_ad_analytics_by_member_region` source tables and downstream staging models. See above for schema change details and new models added.
-  - For dbt Core users: If you do not sync these tables or would like disable these new models you can disable the models by setting the any of the `linkedin_ads__using_geo`, `linkedin_ads__using_monthly_ad_analytics_by_member_country`, or `linkedin_ads__using_monthly_ad_analytics_by_member_region` variables to `false` in your `dbt_project.yml` file (`true` by default).
+  - For dbt Core users: If you do not sync these tables or would like disable these new models you can disable the models by setting the any of the `linkedin_ads__using_geo`, `linkedin_ads__using_monthly_ad_analytics_by_member_country`, or `linkedin_ads__using_monthly_ad_analytics_by_member_region` variables to `false` in your `dbt_project.yml` file (`true` by default). Refer to the [README](https://github.com/fivetran/dbt_linkedin/tree/main?tab=readme-ov-file#passing-through-additional-metrics) for more details.
 - Included the `linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics` and `linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics` passthrough variables in the above mentioned new staging models. Refer to the [README](https://github.com/fivetran/dbt_linkedin/tree/main?tab=readme-ov-file#passing-through-additional-metrics) for more details.
 
 ## Documentation

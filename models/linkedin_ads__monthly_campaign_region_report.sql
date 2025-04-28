@@ -43,7 +43,6 @@ final as (
     select 
         report.source_relation,
         report.date_month,
-        report.member_region,
         geo.value as region_name,
         report.campaign_id,
         campaign.campaign_name,
@@ -54,14 +53,14 @@ final as (
         account.account_name,
         campaign.status as campaign_status,
         campaign_group.status as campaign_group_status,
-        campaign.type,
+        campaign.type as campaign_type,
         campaign.cost_type,
         campaign.creative_selection,
         campaign.daily_budget_amount,
         campaign.daily_budget_currency_code,
         campaign.unit_cost_amount,
         campaign.unit_cost_currency_code,
-        account.currency,
+        account.currency as account_currency,
         campaign.format,
         campaign.locale_country,
         campaign.locale_language,
@@ -83,9 +82,9 @@ final as (
         
         {{ linkedin_ads_persist_pass_through_columns(pass_through_variable='linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics', transform='sum') }}
 
-    from report 
+    from report
     left join geo
-        on geo.geo_id = report.member_region
+        on geo.geo_id = report.member_region_geo_id
         and report.source_relation = report.source_relation
     left join campaign 
         on report.campaign_id = campaign.campaign_id
@@ -97,7 +96,7 @@ final as (
         on campaign.account_id = account.account_id
         and campaign.source_relation = account.source_relation
 
-    {{ dbt_utils.group_by(32) }}
+    {{ dbt_utils.group_by(31) }}
 
 )
 
