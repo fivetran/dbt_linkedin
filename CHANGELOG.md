@@ -3,7 +3,7 @@
 [PR #44](https://github.com/fivetran/dbt_linkedin/pull/44) includes the following updates:
 
 ## Schema Changes
-**8 total changes • 0 possible breaking changes
+**8 total changes • 0 possible breaking changes**
 | Data Model                                    | Change Type | Old Name | New Name                                  | Notes                                                             |
 |---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
 | [linkedin_ads__monthly_campaign_country_report](https://fivetran.github.io/dbt_linkedin/#!/model/model.linkedin.linkedin_ads__monthly_campaign_country_report)       | New transformation model   |          |  | Table that represents the monthly performance of a campaign at the country level.               |
@@ -25,7 +25,7 @@
 - Corrected references to connectors and connections in the README. ([#43](https://github.com/fivetran/dbt_linkedin/pull/43))
 
 ## Under the Hood
-- Added vertical integrity test to ensure data accuracy of the new `linkedin_ads__monthly_campaign_country_report` and `linkedin_ads__monthly_campaign_region_report` models.
+- Added vertical integrity tests to ensure data accuracy of the new `linkedin_ads__monthly_campaign_country_report` and `linkedin_ads__monthly_campaign_region_report` models. ([#44](https://github.com/fivetran/dbt_linkedin/pull/44))
 
 # dbt_linkedin v0.10.0
 [PR #38](https://github.com/fivetran/dbt_linkedin/pull/38) includes the following updates:

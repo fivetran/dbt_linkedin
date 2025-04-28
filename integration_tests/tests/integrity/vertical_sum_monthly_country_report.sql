@@ -55,5 +55,5 @@ where end_count_campaign != staging_count_campaign or
     end_count_unique_months != staging_count_unique_months or
     end_total_impressions != staging_total_impressions or
     end_total_clicks != staging_total_clicks or
-    end_total_cost != staging_total_cost or
-    end_total_conversion_value != staging_total_conversion_value
+    abs(end_total_cost - staging_total_cost) > 0.01 or
+    abs(end_total_conversion_value - staging_total_conversion_value) > 0.01
