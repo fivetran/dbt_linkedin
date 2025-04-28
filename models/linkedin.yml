@@ -631,10 +631,10 @@ models:
       - name: format
         description: The ad format on the campaign level. See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/campaign-formats?view=li-lms-2022-07
       
-      - name: locale_country
+      - name: campaign_locale_country
         description: Locale of the campaign. An uppercase two-letter country code as defined by ISO-3166.
 
-      - name: locale_language
+      - name: campaign_locale_language
         description: Locale of the campaign. A lowercase two-letter language code as defined by ISO-639.
 
       - name: objective_type
@@ -802,10 +802,10 @@ models:
       - name: format
         description: The ad format on the campaign level. See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/campaign-formats?view=li-lms-2022-07
       
-      - name: locale_country
+      - name: campaign_locale_country
         description: Locale of the campaign. An uppercase two-letter country code as defined by ISO-3166.
 
-      - name: locale_language
+      - name: campaign_locale_language
         description: Locale of the campaign. A lowercase two-letter language code as defined by ISO-639.
 
       - name: objective_type
