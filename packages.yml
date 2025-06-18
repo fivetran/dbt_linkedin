@@ -1,3 +1,5 @@
 packages:
-  - package: fivetran/linkedin_source
-    version: [">=0.11.0", "<0.12.0"]
+  # - package: fivetran/linkedin_source
+  #   version: [">=0.12.0", "<0.13.0"]
+  - git: https://github.com/fivetran/dbt_linkedin_source.git
+    revision: feature/update-freshness-config
