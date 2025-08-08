@@ -6,10 +6,11 @@ models:
     description: Each record in this table represents the daily performance of ads at the account level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id 
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -77,12 +78,13 @@ models:
     description: Each record in this table represents the daily performance of ads at the campaign level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - campaign_id
-            - account_id
-            - campaign_group_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - campaign_id
+              - account_id
+              - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -131,7 +133,7 @@ models:
           PAUSED - Denotes that the campaign group meets all requirements to be served, but temporarily should not be.
           PENDING_DELETION - Denotes that the campaign group has been requested to be deleted that is currently pending.
           REMOVED - Denoted that the campaign group was deleted, but must remain fetchable due to the existence of performance data.
-          
+
       - name: last_modified_at
         description: The timestamp of when the version was updated.
 
@@ -157,13 +159,13 @@ models:
 
       - name: daily_budget_amount
         description: Maximum amount to spend per day UTC. The amount of money as a real number string.
-      
+
       - name: daily_budget_currency_code
         description: ISO currency code. The currency must match that of the parent account.
-      
+
       - name: format
         description: The ad format on the campaign level. See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/campaign-formats?view=li-lms-2022-07
-      
+
       - name: locale_country
         description: Locale of the campaign. An uppercase two-letter country code as defined by ISO-3166.
 
@@ -183,8 +185,7 @@ models:
 
       - name: is_offsite_delivery_enabled
         description: >
-          Boolean indicating if this campaign to allowed to be served on the LinkedIn Audience Network to extend the reach of your campaign by delivering ads beyond the 
-          LinkedIn feed to members on third-party apps and sites.	(default will be "True" from June 30, 2022)
+          Boolean indicating if this campaign to allowed to be served on the LinkedIn Audience Network to extend the reach of your campaign by delivering ads beyond the  LinkedIn feed to members on third-party apps and sites.	(default will be "True" from June 30, 2022)
 
       - name: optimization_target_type
         description: Determines how this campaign is optimized for spending. If this is not set, there is no optimization. Refer to the documentation here. Default = 'NONE'.
@@ -195,7 +196,7 @@ models:
       - name: run_schedule_end_at
         description: >
           Scheduled date range to run associated creatives. The start date must be non-null. Represents the exclusive (strictly less than) value in which to end the range, if provided.
-      
+
       - name: campaign_status
         description: |
           ACTIVE - Denotes that the campaign is fully servable.
@@ -213,17 +214,14 @@ models:
           SPONSORED_UPDATES - Native ads that promote a company's content updates in the LinkedIn feed.
           SPONSORED_INMAILS - Personalized messages with a call-to-action button delivered to a LinkedIn's member inbox.
           DYNAMIC - Ads that are dynamically personalized.
-      
+
       - name: unit_cost_amount
         description: >
-          This value is used as one of the following: amount to bid (for manual bidding), amount which is the target cost (for target cost bidding) per click, 
-          impression, or other event depending on the pricing model, or cost cap (for cost cap bidding). The amount of money as a real number string. 
-          The amount should be non-negative if the bidding strategy is manual, target cost, or cost cap bidding. The default is 0 with the currency code set to match that of the associated account.
+          This value is used as one of the following: amount to bid (for manual bidding), amount which is the target cost (for target cost bidding) per click,  impression, or other event depending on the pricing model, or cost cap (for cost cap bidding). The amount of money as a real number string.  The amount should be non-negative if the bidding strategy is manual, target cost, or cost cap bidding. The default is 0 with the currency code set to match that of the associated account.
 
       - name: unit_cost_currency_code
         description: >
-          Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account. 
-          ISO currency code.
+          Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account.  ISO currency code.
 
       - name: currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
@@ -236,7 +234,7 @@ models:
 
       - name: external_website_conversions
         description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
-      
+
       - name: one_click_leads
         description: Leads submitted after clicking on LinkedIn ads.
 
@@ -244,11 +242,12 @@ models:
     description: Each record in this table represents the daily performance of ads at the campaign group level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - campaign_group_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - campaign_group_id
+              - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -283,10 +282,10 @@ models:
 
       - name: last_modified_at
         description: The timestamp of when the version was updated.
-          
+
       - name: created_at
         description: The timestamp of when the campaign group was created.
-      
+
       - name: is_backfilled
         description: Flag that denotes whether the campaign group was created organically or to backfill existing campaigns. This is a read-only field set by the system. Default = false.
 
@@ -294,8 +293,8 @@ models:
         description: Represents the inclusive (greater than or equal to) date when to start running the associated campaigns under this campaign group. This field is required.
 
       - name: run_schedule_end_at
-        description: Represents the exclusive (strictly less than) date when to stop running the associated campaigns under this campaign group. If this field is unset, it indicates an open range with no end date. 
-      
+        description: Represents the exclusive (strictly less than) date when to stop running the associated campaigns under this campaign group. If this field is unset, it indicates an open range with no end date.
+
       - name: status
         description: >
           Status of campaign group. Possible values are:
@@ -306,7 +305,7 @@ models:
           PAUSED - Denotes that the campaign group meets all requirements to be served, but temporarily should not be.
           PENDING_DELETION - Denotes that the campaign group has been requested to be deleted that is currently pending.
           REMOVED - Denoted that the campaign group was deleted, but must remain fetchable due to the existence of performance data.
-          
+
       - name: currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
 
@@ -318,7 +317,7 @@ models:
 
       - name: external_website_conversions
         description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
-      
+
       - name: one_click_leads
         description: Leads submitted after clicking on LinkedIn ads.
 
@@ -326,13 +325,14 @@ models:
     description: Each record in this table represents the daily performance of ads at the creative level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - creative_id    
-            - campaign_id
-            - campaign_group_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - creative_id
+              - campaign_id
+              - campaign_group_id
+              - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -404,7 +404,7 @@ models:
           PAUSED - Denotes that the campaign group meets all requirements to be served, but temporarily should not be.
           PENDING_DELETION - Denotes that the campaign group has been requested to be deleted that is currently pending.
           REMOVED - Denoted that the campaign group was deleted, but must remain fetchable due to the existence of performance data.
-          
+
       - name: campaign_status
         description: |
           ACTIVE - Denotes that the campaign is fully servable.
@@ -427,7 +427,7 @@ models:
 
       - name: external_website_conversions
         description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
-      
+
       - name: one_click_leads
         description: Leads submitted after clicking on LinkedIn ads.
 
@@ -435,16 +435,17 @@ models:
     description: Each record in this table represents the daily performance of ads at the url level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - creative_id    
-            - campaign_id
-            - campaign_group_id
-            - account_id
           config:
             # Below is so we don't run this test if the user has allowed urls to have null entries
             enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - creative_id
+              - campaign_id
+              - campaign_group_id
+              - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -514,7 +515,7 @@ models:
 
       - name: utm_term
         description: The utm_term parameter of the ad, extracted from the `click_uri`.
-      
+
       - name: currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
 
@@ -532,7 +533,7 @@ models:
 
       - name: external_website_conversions
         description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
-      
+
       - name: one_click_leads
         description: Leads submitted after clicking on LinkedIn ads.
 
@@ -540,13 +541,14 @@ models:
     description: Each record in this table represents the monthly performance of a campaign at the country level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_month
-            - country_name
-            - campaign_id
-            - account_id
-            - campaign_group_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_month
+              - country_name
+              - campaign_id
+              - account_id
+              - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -598,7 +600,7 @@ models:
           PAUSED - Denotes that the campaign group meets all requirements to be served, but temporarily should not be.
           PENDING_DELETION - Denotes that the campaign group has been requested to be deleted that is currently pending.
           REMOVED - Denoted that the campaign group was deleted, but must remain fetchable due to the existence of performance data.
-          
+
       - name: last_modified_at
         description: The timestamp of when the version was updated.
 
@@ -624,13 +626,13 @@ models:
 
       - name: daily_budget_amount
         description: Maximum amount to spend per day UTC. The amount of money as a real number string.
-      
+
       - name: daily_budget_currency_code
         description: ISO currency code. The currency must match that of the parent account.
-      
+
       - name: format
         description: The ad format on the campaign level. See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/campaign-formats?view=li-lms-2022-07
-      
+
       - name: campaign_locale_country
         description: Locale of the campaign. An uppercase two-letter country code as defined by ISO-3166.
 
@@ -650,8 +652,7 @@ models:
 
       - name: is_offsite_delivery_enabled
         description: >
-          Boolean indicating if this campaign to allowed to be served on the LinkedIn Audience Network to extend the reach of your campaign by delivering ads beyond the 
-          LinkedIn feed to members on third-party apps and sites.	(default will be "True" from June 30, 2022)
+          Boolean indicating if this campaign to allowed to be served on the LinkedIn Audience Network to extend the reach of your campaign by delivering ads beyond the  LinkedIn feed to members on third-party apps and sites.	(default will be "True" from June 30, 2022)
 
       - name: optimization_target_type
         description: Determines how this campaign is optimized for spending. If this is not set, there is no optimization. Refer to the documentation here. Default = 'NONE'.
@@ -662,7 +663,7 @@ models:
       - name: run_schedule_end_at
         description: >
           Scheduled date range to run associated creatives. The start date must be non-null. Represents the exclusive (strictly less than) value in which to end the range, if provided.
-      
+
       - name: campaign_status
         description: |
           ACTIVE - Denotes that the campaign is fully servable.
@@ -680,17 +681,14 @@ models:
           SPONSORED_UPDATES - Native ads that promote a company's content updates in the LinkedIn feed.
           SPONSORED_INMAILS - Personalized messages with a call-to-action button delivered to a LinkedIn's member inbox.
           DYNAMIC - Ads that are dynamically personalized.
-      
+
       - name: unit_cost_amount
         description: >
-          This value is used as one of the following: amount to bid (for manual bidding), amount which is the target cost (for target cost bidding) per click, 
-          impression, or other event depending on the pricing model, or cost cap (for cost cap bidding). The amount of money as a real number string. 
-          The amount should be non-negative if the bidding strategy is manual, target cost, or cost cap bidding. The default is 0 with the currency code set to match that of the associated account.
+          This value is used as one of the following: amount to bid (for manual bidding), amount which is the target cost (for target cost bidding) per click,  impression, or other event depending on the pricing model, or cost cap (for cost cap bidding). The amount of money as a real number string.  The amount should be non-negative if the bidding strategy is manual, target cost, or cost cap bidding. The default is 0 with the currency code set to match that of the associated account.
 
       - name: unit_cost_currency_code
         description: >
-          Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account. 
-          ISO currency code.
+          Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account.  ISO currency code.
 
       - name: account_currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
@@ -703,7 +701,7 @@ models:
 
       - name: external_website_conversions
         description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
-      
+
       - name: one_click_leads
         description: Leads submitted after clicking on LinkedIn ads.
 
@@ -711,13 +709,14 @@ models:
     description: Each record in this table represents the monthly performance of a campaign at the country level.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_month
-            - region_name
-            - campaign_id
-            - account_id
-            - campaign_group_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_month
+              - region_name
+              - campaign_id
+              - account_id
+              - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -769,7 +768,7 @@ models:
           PAUSED - Denotes that the campaign group meets all requirements to be served, but temporarily should not be.
           PENDING_DELETION - Denotes that the campaign group has been requested to be deleted that is currently pending.
           REMOVED - Denoted that the campaign group was deleted, but must remain fetchable due to the existence of performance data.
-          
+
       - name: last_modified_at
         description: The timestamp of when the version was updated.
 
@@ -795,13 +794,13 @@ models:
 
       - name: daily_budget_amount
         description: Maximum amount to spend per day UTC. The amount of money as a real number string.
-      
+
       - name: daily_budget_currency_code
         description: ISO currency code. The currency must match that of the parent account.
-      
+
       - name: format
         description: The ad format on the campaign level. See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/campaign-formats?view=li-lms-2022-07
-      
+
       - name: campaign_locale_country
         description: Locale of the campaign. An uppercase two-letter country code as defined by ISO-3166.
 
@@ -821,8 +820,7 @@ models:
 
       - name: is_offsite_delivery_enabled
         description: >
-          Boolean indicating if this campaign to allowed to be served on the LinkedIn Audience Network to extend the reach of your campaign by delivering ads beyond the 
-          LinkedIn feed to members on third-party apps and sites.	(default will be "True" from June 30, 2022)
+          Boolean indicating if this campaign to allowed to be served on the LinkedIn Audience Network to extend the reach of your campaign by delivering ads beyond the  LinkedIn feed to members on third-party apps and sites.	(default will be "True" from June 30, 2022)
 
       - name: optimization_target_type
         description: Determines how this campaign is optimized for spending. If this is not set, there is no optimization. Refer to the documentation here. Default = 'NONE'.
@@ -833,7 +831,7 @@ models:
       - name: run_schedule_end_at
         description: >
           Scheduled date range to run associated creatives. The start date must be non-null. Represents the exclusive (strictly less than) value in which to end the range, if provided.
-      
+
       - name: campaign_status
         description: |
           ACTIVE - Denotes that the campaign is fully servable.
@@ -851,17 +849,14 @@ models:
           SPONSORED_UPDATES - Native ads that promote a company's content updates in the LinkedIn feed.
           SPONSORED_INMAILS - Personalized messages with a call-to-action button delivered to a LinkedIn's member inbox.
           DYNAMIC - Ads that are dynamically personalized.
-      
+
       - name: unit_cost_amount
         description: >
-          This value is used as one of the following: amount to bid (for manual bidding), amount which is the target cost (for target cost bidding) per click, 
-          impression, or other event depending on the pricing model, or cost cap (for cost cap bidding). The amount of money as a real number string. 
-          The amount should be non-negative if the bidding strategy is manual, target cost, or cost cap bidding. The default is 0 with the currency code set to match that of the associated account.
+          This value is used as one of the following: amount to bid (for manual bidding), amount which is the target cost (for target cost bidding) per click,  impression, or other event depending on the pricing model, or cost cap (for cost cap bidding). The amount of money as a real number string.  The amount should be non-negative if the bidding strategy is manual, target cost, or cost cap bidding. The default is 0 with the currency code set to match that of the associated account.
 
       - name: unit_cost_currency_code
         description: >
-          Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account. 
-          ISO currency code.
+          Amount to bid per click, impression, or other event depending on the pricing model. The default is 0 with the currency code set to match that of the associated account.  ISO currency code.
 
       - name: account_currency
         description: The ISO 4217 currency code of the account, such as 'USD' for United States Dollar (default).
@@ -874,6 +869,6 @@ models:
 
       - name: external_website_conversions
         description: The actions taken on your website that you've defined as valuable to your business after clicking on LinkedIn ads.
-      
+
       - name: one_click_leads
         description: Leads submitted after clicking on LinkedIn ads.
