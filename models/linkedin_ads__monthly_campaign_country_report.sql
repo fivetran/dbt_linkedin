@@ -3,28 +3,28 @@
 with campaign as (
 
     select *
-    from {{ var('campaign_history') }}
+    from {{ ref('stg_linkedin_ads__campaign_history') }}
     where is_latest_version
 ),
 
 campaign_group as (
 
     select *
-    from {{ var('campaign_group_history') }}
+    from {{ ref('stg_linkedin_ads__campaign_group_history') }}
     where is_latest_version
 ),
 
 account as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ ref('stg_linkedin_ads__account_history') }}
     where is_latest_version
 ),
 
 geo as (
 
     select *
-    from {{ var('geo') }}
+    from {{ ref('stg_linkedin_ads__geo') }}
 ),
 
 report as (
@@ -35,7 +35,7 @@ report as (
         {% else %}
             0 as total_conversions
         {% endif %}
-    from {{ var('monthly_ad_analytics_by_member_country') }}
+    from {{ ref('stg_linkedin_ads__monthly_ad_analytics_by_country') }}
 ),
 
 final as (
