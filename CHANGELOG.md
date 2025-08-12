@@ -1,4 +1,5 @@
 # dbt_linkedin v1.0.0
+
 [PR #50](https://github.com/fivetran/dbt_linkedin/pull/50) includes the following updates:
 
 ## Breaking Changes
@@ -18,6 +19,10 @@
 
 ### Schema Configuration Updates
 - Some customizations have changed, refer to the [README](https://github.com/fivetran/dbt_linkedin/blob/main/README.md) for details.
+
+## Under the Hood
+- Updated conditions in `.github/workflows/auto-release.yml`.
+- Added `.github/workflows/generate-docs.yml`.
 
 # dbt_linkedin v0.12.0
 
