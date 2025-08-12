@@ -3,21 +3,21 @@
 with campaign_group as (
 
     select *
-    from {{ var('campaign_group_history') }}
+    from {{ ref('stg_linkedin_ads__campaign_group_history') }}
     where is_latest_version
 ),
 
 campaign as (
 
     select *
-    from {{ var('campaign_history') }}
+    from {{ ref('stg_linkedin_ads__campaign_history') }}
     where is_latest_version
 ),
 
 account as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ ref('stg_linkedin_ads__account_history') }}
     where is_latest_version
 ),
 
@@ -29,7 +29,7 @@ report as (
         {% else %}
             0 as total_conversions
         {% endif %}
-    from {{ var('ad_analytics_by_campaign') }}
+    from {{ ref('stg_linkedin_ads__ad_analytics_by_campaign') }}
 ),
 
 final as (
