@@ -16,7 +16,7 @@
 </p>
 
 ## What does this dbt package do?
-- Produces modeled tables that leverage Linkedin Ad Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/linkedin-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/linkedin-ads#schemainformation) and builds off the output of our [Linkedin Ads source package](https://github.com/fivetran/dbt_linkedin_source).
+- Produces modeled tables that leverage Linkedin Ad Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/linkedin-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/linkedin-ads#schemainformation).
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign (ad groups in other ad platforms), campaign group (campaigns in other ad platforms), creative, and utm/url level reports.
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
@@ -61,9 +61,9 @@ Include the following Linkedin Ads package version in your `packages.yml` file:
 # packages.yml
 packages:
   - package: fivetran/linkedin
-    version: [">=0.12.0", "<0.13.0"]
+    version: [">=1.0.0", "<1.1.0"]
 ```
-Do **NOT** include the `linkedin_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+> All required sources are now bundled into this transformation package. Do not include `fivetran/linkedin_source` in your `packages.yml`.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `linkedin_ads` schema. If this is not where your Linkedin Ad Analytics data is (for example, if your Linkedin schema is named `linkedin_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -188,8 +188,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
 ```yml
 packages:
-    - package: fivetran/linkedin_source
-      version: [">=0.12.0", "<0.13.0"]
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
     - package: dbt-labs/dbt_utils
