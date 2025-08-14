@@ -1,4 +1,4 @@
-# LinkedIn Ad Analytics Transformation dbt Package ([docs](https://fivetran.github.io/dbt_linkedin/))
+# LinkedIn Ad Analytics dbt Package ([docs](https://fivetran.github.io/dbt_linkedin/))
 
 <p align="left">
     <a alt="License"
