@@ -63,6 +63,7 @@ packages:
   - package: fivetran/linkedin
     version: [">=1.0.0", "<1.1.0"]
 ```
+
 > All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/linkedin_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
@@ -169,7 +170,7 @@ models:
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available when running the package on multiple unioned connections.
 
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_linkedin/blob/main/dbt_project.yml) variable declarations to see the expected names.
-    
+
 ```yml
 # dbt_project.yml
 vars:
