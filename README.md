@@ -63,7 +63,8 @@ packages:
   - package: fivetran/linkedin
     version: [">=1.0.0", "<1.1.0"]
 ```
-> All required sources are now bundled into this transformation package. Do not include `fivetran/linkedin_source` in your `packages.yml`.
+
+> All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/linkedin_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `linkedin_ads` schema. If this is not where your Linkedin Ad Analytics data is (for example, if your Linkedin schema is named `linkedin_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -160,9 +161,9 @@ By default this package will build the LinkedIn Ad Analytics staging models with
 # dbt_project.yml
 models:
     linkedin:
-      +schema: my_new_schema_name # leave blank for just the target_schema
-    linkedin_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
+      +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
+      staging:
+        +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
 ```
 
 #### Change the source table references
