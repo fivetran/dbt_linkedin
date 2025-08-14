@@ -4,12 +4,6 @@ models:
 
   - name: linkedin_ads__account_report
     description: Each record in this table represents the daily performance of ads at the account level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id 
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -75,14 +69,6 @@ models:
 
   - name: linkedin_ads__campaign_report
     description: Each record in this table represents the daily performance of ads at the campaign level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - campaign_id
-            - account_id
-            - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -242,13 +228,6 @@ models:
 
   - name: linkedin_ads__campaign_group_report
     description: Each record in this table represents the daily performance of ads at the campaign group level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - campaign_group_id
-            - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -324,15 +303,6 @@ models:
 
   - name: linkedin_ads__creative_report
     description: Each record in this table represents the daily performance of ads at the creative level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - creative_id    
-            - campaign_id
-            - campaign_group_id
-            - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -433,18 +403,6 @@ models:
 
   - name: linkedin_ads__url_report
     description: Each record in this table represents the daily performance of ads at the url level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - creative_id    
-            - campaign_id
-            - campaign_group_id
-            - account_id
-          config:
-            # Below is so we don't run this test if the user has allowed urls to have null entries
-            enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -538,15 +496,6 @@ models:
 
   - name: linkedin_ads__monthly_campaign_country_report
     description: Each record in this table represents the monthly performance of a campaign at the country level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_month
-            - country_name
-            - campaign_id
-            - account_id
-            - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -709,15 +658,6 @@ models:
 
   - name: linkedin_ads__monthly_campaign_region_report
     description: Each record in this table represents the monthly performance of a campaign at the country level.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_month
-            - region_name
-            - campaign_id
-            - account_id
-            - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"

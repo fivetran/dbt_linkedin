@@ -1,9 +1,10 @@
 name: 'linkedin_integration_tests'
-version: '0.12.0'
+version: '1.0.0'
 profile: 'integration_tests'
 config-version: 2
 
 vars:
+  linkedin:
     linkedin_ads_schema: linkedin_integration_tests_5
     linkedin_ads_account_history_identifier: "linkedin_account_history_data"
     linkedin_ads_ad_analytics_by_creative_identifier: "linkedin_ad_analytics_by_creative_data"
@@ -63,3 +64,7 @@ seeds:
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
+
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True

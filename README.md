@@ -1,4 +1,4 @@
-# LinkedIn Ad Analytics Transformation dbt Package ([docs](https://fivetran.github.io/dbt_linkedin/))
+# LinkedIn Ad Analytics dbt Package ([docs](https://fivetran.github.io/dbt_linkedin/))
 
 <p align="left">
     <a alt="License"
@@ -16,7 +16,7 @@
 </p>
 
 ## What does this dbt package do?
-- Produces modeled tables that leverage Linkedin Ad Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/linkedin-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/linkedin-ads#schemainformation) and builds off the output of our [Linkedin Ads source package](https://github.com/fivetran/dbt_linkedin_source).
+- Produces modeled tables that leverage Linkedin Ad Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/linkedin-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/linkedin-ads#schemainformation).
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign (ad groups in other ad platforms), campaign group (campaigns in other ad platforms), creative, and utm/url level reports.
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
@@ -61,9 +61,10 @@ Include the following Linkedin Ads package version in your `packages.yml` file:
 # packages.yml
 packages:
   - package: fivetran/linkedin
-    version: [">=0.12.0", "<0.13.0"]
+    version: [">=1.0.0", "<1.1.0"]
 ```
-Do **NOT** include the `linkedin_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+
+> All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/linkedin_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `linkedin_ads` schema. If this is not where your Linkedin Ad Analytics data is (for example, if your Linkedin schema is named `linkedin_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -84,7 +85,7 @@ vars:
     linkedin_ads_union_schemas: ['linkedin_usa','linkedin_canada'] # use this if the data is in different schemas/datasets of the same database/project
     linkedin_ads_union_databases: ['linkedin_usa','linkedin_canada'] # use this if the data is in different databases/projects but uses the same schema name
 ```
-> NOTE: The native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
+> NOTE: The native `src_linkedin.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `src_linkedin.yml`.
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
@@ -160,16 +161,16 @@ By default this package will build the LinkedIn Ad Analytics staging models with
 # dbt_project.yml
 models:
     linkedin:
-      +schema: my_new_schema_name # leave blank for just the target_schema
-    linkedin_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
+      +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
+      staging:
+        +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
 ```
 
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available when running the package on multiple unioned connections.
 
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_linkedin/blob/main/dbt_project.yml) variable declarations to see the expected names.
-    
+
 ```yml
 # dbt_project.yml
 vars:
@@ -188,8 +189,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
 ```yml
 packages:
-    - package: fivetran/linkedin_source
-      version: [">=0.12.0", "<0.13.0"]
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
     - package: dbt-labs/dbt_utils
