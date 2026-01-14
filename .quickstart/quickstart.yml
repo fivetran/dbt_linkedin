@@ -44,21 +44,21 @@ supported_vars:
 
   linkedin_ads__creative_passthrough_metrics:
     type: dictionary
-    description: "Addtional `AD_ANALYTICS_BY_CREATIVE` report columns to include in `linkedin_ads__creative_report` and `linkedin_ads__url_report`"
+    description: "Additional `AD_ANALYTICS_BY_CREATIVE` report columns to include in `linkedin_ads__creative_report` and `linkedin_ads__url_report`"
     display_name: "Additional Creative Analytics Metrics"
 
   linkedin_ads__campaign_passthrough_metrics:
     type: dictionary
-    description: "Addtional `AD_ANALYTICS_BY_CAMPAIGN` report columns to include in `linkedin_ads__campaign_report`, `linkedin_ads__campaign_group_report`, and `linkedin_ads__account_report`"
+    description: "Additional `AD_ANALYTICS_BY_CAMPAIGN` report columns to include in `linkedin_ads__campaign_report`, `linkedin_ads__campaign_group_report`, and `linkedin_ads__account_report`"
     display_name: "Additional Campaign Analytics Metrics"
 
   linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics:
     type: dictionary
-    description: "Addtional `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY` report columns to include in `linkedin_ads__monthly_country_report`"
+    description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY` report columns to include in `linkedin_ads__monthly_country_report`"
     display_name: "Additional Country Analytics Metrics"
 
   linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics:
     type: dictionary
-    description: "Addtional `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` report columns to include in `linkedin_ads__monthly_region_report`"
+    description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` report columns to include in `linkedin_ads__monthly_region_report`"
     display_name: "Additional Region Analytics Metrics"
 
