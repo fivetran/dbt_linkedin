@@ -26,3 +26,39 @@ public_models: [
   "linkedin_ads__monthly_campaign_country_report",
   "linkedin_ads__monthly_campaign_region_report"
 ]
+
+supported_vars:
+  linkedin_ads__use_local_currency:
+    type: boolean
+    value: false
+    description: "Present costs in local currency instead of USD. Please note that conversion values are only available in local currency"
+    display_name: "Use Local Currency"
+
+  linkedin_ads__conversion_fields:
+    type: list
+    value:
+      - "external_website_conversions"
+      - "one_click_leads"
+    description: "Metrics from `AD_ANALYTICS_BY_CAMPAIGN`, `AD_ANALYTICS_BY_CREATIVE`, `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY`, AND `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` that will be tracked as conversions"
+    display_name: "Conversion Metrics"
+
+  linkedin_ads__creative_passthrough_metrics:
+    type: dictionary
+    description: "Addtional `AD_ANALYTICS_BY_CREATIVE` report columns to include in `linkedin_ads__creative_report` and `linkedin_ads__url_report`"
+    display_name: "Additional Creative Analytics Metrics"
+
+  linkedin_ads__campaign_passthrough_metrics:
+    type: dictionary
+    description: "Addtional `AD_ANALYTICS_BY_CAMPAIGN` report columns to include in `linkedin_ads__campaign_report`, `linkedin_ads__campaign_group_report`, and `linkedin_ads__account_report`"
+    display_name: "Additional Campaign Analytics Metrics"
+
+  linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics:
+    type: dictionary
+    description: "Addtional `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY` report columns to include in `linkedin_ads__monthly_country_report`"
+    display_name: "Additional Country Analytics Metrics"
+
+  linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics:
+    type: dictionary
+    description: "Addtional `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` report columns to include in `linkedin_ads__monthly_region_report`"
+    display_name: "Additional Region Analytics Metrics"
+

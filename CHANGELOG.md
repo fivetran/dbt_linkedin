@@ -1,3 +1,15 @@
+# dbt_linkedin v1.2.0
+
+[PR #58](https://github.com/fivetran/dbt_linkedin/pull/58) includes the following updates:
+
+## Documentation
+- Updates README with standardized Fivetran formatting
+
+## Under the Hood
+- In the `.quickstart.yml` file:
+  - Adds `table_variables` for relevant sources to prevent missing sources from blocking downstream Quickstart models.
+  - Adds `supported_vars` for Quickstart UI customization,
+
 # dbt_linkedin v1.1.0
 
 [PR #56](https://github.com/fivetran/dbt_linkedin/pull/56) includes the following updates:
