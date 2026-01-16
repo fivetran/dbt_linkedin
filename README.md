@@ -22,8 +22,8 @@ This dbt package transforms data from Fivetran's Linkedin connector into analyti
 
 - Number of materialized models¹: 25
 - Connector documentation
-  - [Linkedin connector documentation](https://fivetran.com/docs/connectors/applications/linkedin)
-  - [Linkedin ERD](https://fivetran.com/docs/connectors/applications/linkedin#schemainformation)
+  - [Linkedin connector documentation](https://fivetran.com/docs/connectors/applications/linkedin-ads#linkedinadanalytics)
+  - [Linkedin ERD](https://fivetran.com/docs/connectors/applications/linkedin-ads#schemainformation)
 - dbt package documentation
   - [GitHub repository](https://github.com/fivetran/dbt_linkedin)
   - [dbt Docs](https://fivetran.github.io/dbt_linkedin/#!/overview)
@@ -59,7 +59,7 @@ By default, this package materializes the following final tables:
 ---
 
 ## Visualizations
-Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_linkedin). Check out some [sample reports here](https://fivetran-linkedin.streamlit.app/).
+Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_ad_reporting). Check out some [sample reports here](https://fivetran-ad-reporting.streamlit.app/ad_performance).
 
 <p align="center">
   <a href="https://fivetran-ad-reporting.streamlit.app/ad_performance">
