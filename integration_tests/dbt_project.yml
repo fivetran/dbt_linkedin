@@ -22,6 +22,9 @@ vars:
     linkedin_ads__conversion_fields: ['external_website_conversions', 'one_click_leads']
 
 models:
+  +persist_docs:
+    relation: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
   +schema: "linkedin_{{ var('directed_schema','dev') }}"
 
 seeds:
