@@ -120,6 +120,13 @@ vars:
     linkedin_ads__using_monthly_ad_analytics_by_member_region: False # True by default
 ```
 
+#### Disable the URL null filter
+By default, the `linkedin_ads_url_report` model filters out records where the URL is null. If you would like to include these records in your final URL report, you may disable this filter by setting the following variable in your root `dbt_project.yml` file:
+```yml
+vars:
+    ad_reporting__url_report__using_null_filter: False # True by default
+```
+
 #### Switching to Local Currency
 Additionally, the package allows you to select whether you want to add in costs in USD or the local currency of the ad. By default, the package uses USD. If you would like to have costs in the local currency, add the following variable to your `dbt_project.yml` file:
 
