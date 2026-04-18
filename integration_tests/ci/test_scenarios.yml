@@ -1,0 +1,12 @@
+schema_variable_name: "linkedin_ads_schema"
+default_include_incremental: false
+
+test_scenarios:
+  - name: "local currency with geo and analytics disabled"
+    vars:
+      linkedin_ads__use_local_currency: true
+      ad_reporting__url_report__using_null_filter: false
+      linkedin_ads__using_geo: false
+      linkedin_ads__using_monthly_ad_analytics_by_member_country: false
+      linkedin_ads__using_monthly_ad_analytics_by_member_region: false
+    include_incremental: false
