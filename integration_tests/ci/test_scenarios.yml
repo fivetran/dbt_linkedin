@@ -17,7 +17,7 @@ test_scenarios:
     vars: {}
     include_incremental: false
 
-  - name: "local currency geo disabled"
+  - name: "toggle vars"
     vars:
       linkedin_ads__use_local_currency: true
       ad_reporting__url_report__using_null_filter: false
