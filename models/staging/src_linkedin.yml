@@ -9,7 +9,7 @@ sources:
 
     config:
       loaded_at_field: _fivetran_synced
-      enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) }}"
+      enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads_sources', []) == [] }}"
       freshness: 
         warn_after: {count: 48, period: hour}
         error_after: {count: 168, period: hour}
@@ -315,7 +315,7 @@ sources:
         description: Contains geographic data for LinkedIn Ads, including IDs and names of locations.
         identifier: "{{ var('linkedin_ads_geo_identifier', 'geo') }}"
         config:
-          enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_geo', true) }}"
+          enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_geo', true) and var('linkedin_ads_sources', []) == [] }}"
         columns:
           - name: id
             description: Unique identifier for the geographic entity, used for joins in reporting tables.
@@ -326,7 +326,7 @@ sources:
         description: Monthly LinkedIn Ads performance metrics aggregated by member country and campaign.
         identifier: "{{ var('linkedin_ads_monthly_ad_analytics_by_member_country_identifier', 'monthly_ad_analytics_by_member_country') }}"
         config:
-          enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_monthly_ad_analytics_by_member_country', true) }}"
+          enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_monthly_ad_analytics_by_member_country', true) and var('linkedin_ads_sources', []) == [] }}"
         columns:
           - name: campaign_id
             description: Identifier of the LinkedIn Ads campaign.
@@ -353,7 +353,7 @@ sources:
         description: Monthly LinkedIn Ads performance metrics aggregated by member region and campaign.
         identifier: "{{ var('linkedin_ads_monthly_ad_analytics_by_member_region_identifier', 'monthly_ad_analytics_by_member_region') }}"
         config:
-          enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_monthly_ad_analytics_by_member_region', true) }}"
+          enabled: "{{ var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_monthly_ad_analytics_by_member_region', true) and var('linkedin_ads_sources', []) == [] }}"
         columns:
           - name: campaign_id
             description: Identifier of the LinkedIn Ads campaign.

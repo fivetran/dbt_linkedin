@@ -15,10 +15,7 @@ with base as (
             )
         }}
     
-        {{ fivetran_utils.source_relation(
-            union_schema_variable='linkedin_ads_union_schemas', 
-            union_database_variable='linkedin_ads_union_databases') 
-        }}
+        {{ fivetran_utils.apply_source_relation(package_name='linkedin') }}
 
     from base
 
@@ -50,7 +47,7 @@ with base as (
         cast(run_schedule_end as {{ dbt.type_timestamp() }}) as run_schedule_end_at,
         cast(last_modified_time as {{ dbt.type_timestamp() }}) as last_modified_at,
         cast(created_time as {{ dbt.type_timestamp() }}) as created_at,
-        row_number() over (partition by id {{ ', source_relation' if (var('linkedin_ads_union_schemas', []) or var('linkedin_ads_union_databases', []) | length > 1) }} order by last_modified_time desc) = 1 as is_latest_version
+        row_number() over (partition by id {{ fivetran_utils.partition_by_source_relation(package_name='linkedin') }} order by last_modified_time desc) = 1 as is_latest_version
 
     from macro
 
