@@ -7,10 +7,10 @@
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ------------- | ----------- | --- | --- | ----- |
-| All models | `source_relation` column (when using a single linkedin schema) | Empty string (`''`) | `<database>.<schema>` |  |
+| All models | `source_relation` column (when using a single LinkedIn Ads schema) | Empty string (`''`) | `<database>.<schema>` |  |
 
 ## Feature Updates
-- Introduces the new (recommended) `linkedin_sources` variable for more robust union data configuration. The old`linkedin_union_schemas` and `linkedin_union_databases` variables will still be supported. See the [README](https://github.com/fivetran/dbt_linkedin/tree/main#define-database-and-schema-variables) for specific details.
+- Introduces the new (recommended) `linkedin_ads_sources` variable for more robust union data configuration. The old`linkedin_ads_union_schemas` and `linkedin_ads_union_databases` variables will still be supported. See the [README](https://github.com/fivetran/dbt_linkedin/tree/main#define-database-and-schema-variables) for specific details.
 
 ## Under the Hood
 - Adds the `fivetran_using_source_casing` variable for case-sensitive destination support. When enabled, downstream transformations respect source casing to ensure consistent results. See the [Additional Configurations](https://github.com/fivetran/dbt_linkedin/#source-casing-for-case-sensitive-destinations) section of the README for details.

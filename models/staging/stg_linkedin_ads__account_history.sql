@@ -15,7 +15,7 @@ with base as (
             )
         }}
     
-        {{ fivetran_utils.apply_source_relation(package_name='linkedin') }}
+        {{ fivetran_utils.apply_source_relation(package_name='linkedin_ads') }}
 
     from base
 
@@ -31,7 +31,7 @@ with base as (
         type,
         cast(last_modified_time as {{ dbt.type_timestamp() }}) as last_modified_at,
         cast(created_time as {{ dbt.type_timestamp() }}) as created_at,
-        row_number() over (partition by id {{ fivetran_utils.partition_by_source_relation(package_name='linkedin') }} order by last_modified_time desc) = 1 as is_latest_version
+        row_number() over (partition by id {{ fivetran_utils.partition_by_source_relation(package_name='linkedin_ads') }} order by last_modified_time desc) = 1 as is_latest_version
 
     from macro
 

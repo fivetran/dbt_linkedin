@@ -15,7 +15,7 @@ with base as (
             )
         }}
     
-        {{ fivetran_utils.apply_source_relation(package_name='linkedin') }}
+        {{ fivetran_utils.apply_source_relation(package_name='linkedin_ads') }}
 
     from base
 
@@ -40,7 +40,7 @@ with base as (
 
     select 
         *,
-        row_number() over (partition by creative_id {{ fivetran_utils.partition_by_source_relation(package_name='linkedin') }} order by last_modified_at desc) = 1 as is_latest_version,
+        row_number() over (partition by creative_id {{ fivetran_utils.partition_by_source_relation(package_name='linkedin_ads') }} order by last_modified_at desc) = 1 as is_latest_version,
         {{ dbt.split_part('click_uri', "'?'", 1) }} as base_url,
         {{ dbt_utils.get_url_host('click_uri') }} as url_host,
         '/' || {{ dbt_utils.get_url_path('click_uri') }} as url_path,

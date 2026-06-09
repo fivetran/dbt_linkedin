@@ -17,7 +17,7 @@ macro as (
             )
         }}
     
-        {{ fivetran_utils.apply_source_relation(package_name='linkedin') }}
+        {{ fivetran_utils.apply_source_relation(package_name='linkedin_ads') }}
 
     from base
 ),

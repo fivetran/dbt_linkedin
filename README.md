@@ -94,21 +94,21 @@ By default, this package runs using your destination and the `linkedin` schema. 
 
 ```yml
 vars:
-    linkedin_database: your_destination_name
-    linkedin_schema: your_schema_name
+    linkedin_ads_database: your_destination_name
+    linkedin_ads_schema: your_schema_name
 ```
 
 #### Option B: Union multiple connections
-If you have multiple Linkedin connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. For each source table, the package will union all of the data together and pass the unioned table into the transformations. The `source_relation` column in each model indicates the origin of each record.
+If you have multiple Linkedin Ads connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. For each source table, the package will union all of the data together and pass the unioned table into the transformations. The `source_relation` column in each model indicates the origin of each record.
 
-To use this functionality, you will need to set the `linkedin_sources` variable in your root `dbt_project.yml` file:
+To use this functionality, you will need to set the `linkedin_ads_sources` variable in your root `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
 
 vars:
   linkedin:
-    linkedin_sources:
+    linkedin_ads_sources:
       - database: connection_1_destination_name # Required
         schema: connection_1_schema_name # Required
         name: connection_1_source_name # Required only if following the step in the following subsection
@@ -118,11 +118,11 @@ vars:
         name: connection_2_source_name
 ```
 
-> Previous versions of this package employed two separate, mutually exclusive variables for unioning: `linkedin_union_schemas` and `linkedin_union_databases`. While these variables are still supported, `linkedin_sources` is the recommended variable to configure.
+> Previous versions of this package employed two separate, mutually exclusive variables for unioning: `linkedin_ads_union_schemas` and `linkedin_ads_union_databases`. While these variables are still supported, `linkedin_ads_sources` is the recommended variable to configure.
 
 #### Optional: Incorporate unioned sources into DAG
 
-If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple Linkedin connections, you can define your sources in a property `.yml` file, [using this as a template](https://github.com/fivetran/dbt_linkedin/blob/main/models/staging/src_linkedin.yml). Set the variable `has_defined_sources: true` under the Linkedin namespace in your `dbt_project.yml`. Otherwise, your Linkedin connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
+If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple Linkedin Ads connections, you can define your sources in a property `.yml` file, [using this as a template](https://github.com/fivetran/dbt_linkedin/blob/main/models/staging/src_linkedin.yml). Set the variable `has_defined_sources: true` under the Linkedin namespace in your `dbt_project.yml`. Otherwise, your Linkedin Ads connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
 
 ### (Optional) Additional configurations
 #### Disable Country and Region Reports
