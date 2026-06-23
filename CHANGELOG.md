@@ -1,3 +1,21 @@
+# dbt_linkedin v1.3.0
+
+[PR #63](https://github.com/fivetran/dbt_linkedin/pull/63) includes the following updates:
+
+## Schema/Data Changes (--full-refresh required after upgrading)
+**1 total change • 1 possible breaking change**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ------------- | ----------- | --- | --- | ----- |
+| All models | `source_relation` column (when using a single LinkedIn Ads schema) | Empty string (`''`) | `<database>.<schema>` |  |
+
+## Feature Updates
+- Introduces the new (recommended) `linkedin_ads_sources` variable for more robust union data configuration. The old`linkedin_ads_union_schemas` and `linkedin_ads_union_databases` variables will still be supported. See the [README](https://github.com/fivetran/dbt_linkedin/tree/main#define-database-and-schema-variables) for specific details.
+
+## Under the Hood
+- Adds the `fivetran_using_source_casing` variable for case-sensitive destination support. When enabled, downstream transformations respect source casing to ensure consistent results. See the [Additional Configurations](https://github.com/fivetran/dbt_linkedin/#source-casing-for-case-sensitive-destinations) section of the README for details.
+- Introduces `fivetran_utils.partition_by_source_relation` to conditionally include `source_relation` in partition clauses only when multiplesources are configured.
+
 # dbt_linkedin v1.2.0
 
 [PR #58](https://github.com/fivetran/dbt_linkedin/pull/58) includes the following updates:

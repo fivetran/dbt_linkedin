@@ -1,5 +1,7 @@
 {{ config(enabled=var('ad_reporting__linkedin_ads_enabled', True)) }}
 
+{% if var('linkedin_ads_union_schemas', []) | length > 0 or var('linkedin_ads_union_databases', []) | length > 0 %}
+
 {{
     fivetran_utils.union_data(
         table_identifier='ad_analytics_by_campaign', 
@@ -12,3 +14,15 @@
         union_database_variable='linkedin_ads_union_databases'
     )
 }}
+
+{% else %}
+
+{{
+    fivetran_utils.union_connections(
+        connection_dictionary='linkedin_ads_sources',
+        single_source_name='linkedin_ads',
+        single_table_name='ad_analytics_by_campaign'
+    )
+}}
+
+{% endif %}
