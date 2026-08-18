@@ -1,3 +1,11 @@
+# dbt_linkedin v1.3.1
+
+[PR #65](https://github.com/fivetran/dbt_linkedin/pull/65) includes the following updates:
+
+## Feature Updates
+- Adds DuckDB as a supported destination.
+
+
 # dbt_linkedin v1.3.0
 
 [PR #63](https://github.com/fivetran/dbt_linkedin/pull/63) includes the following updates:
