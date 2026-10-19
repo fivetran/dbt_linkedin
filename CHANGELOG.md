@@ -7,11 +7,8 @@
   - Single-connection setups are not affected.
   - Values in these two models change after you upgrade if you union multiple connections. No full refresh is required.
 
-## Under the Hood
-- Updates the country seed data so the country report is covered by the integration tests.
-
 ## Contributors
-- [@porkedchop](https://github.com/porkedchop) ([Issue #66](https://github.com/fivetran/dbt_linkedin/issues/66), [PR #67](https://github.com/fivetran/dbt_linkedin/pull/67))
+- [@porkedchop](https://github.com/porkedchop) ([PR #67](https://github.com/fivetran/dbt_linkedin/pull/67))
 
 # dbt_linkedin v1.3.1
 
