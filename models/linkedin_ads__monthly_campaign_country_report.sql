@@ -85,7 +85,7 @@ final as (
     from report 
     left join geo
         on geo.geo_id = report.member_country_geo_id
-        and report.source_relation = report.source_relation
+        and geo.source_relation = report.source_relation
     left join campaign 
         on report.campaign_id = campaign.campaign_id
         and report.source_relation = campaign.source_relation

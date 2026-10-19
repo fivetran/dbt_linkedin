@@ -1,3 +1,15 @@
+# dbt_linkedin v1.3.2
+
+[PR #68](https://github.com/fivetran/dbt_linkedin/pull/68) includes the following updates:
+
+## Bug Fixes
+- Fixes inflated `cost`, `clicks`, `impressions`, and conversion metrics in the `linkedin_ads__monthly_campaign_country_report` and `linkedin_ads__monthly_campaign_region_report` models when you union multiple LinkedIn Ads connections. Each metric was multiplied by the number of connections.
+  - Single-connection setups are not affected.
+  - Values in these two models change after you upgrade if you union multiple connections. No full refresh is required.
+
+## Contributors
+- [@porkedchop](https://github.com/porkedchop) ([PR #67](https://github.com/fivetran/dbt_linkedin/pull/67))
+
 # dbt_linkedin v1.3.1
 
 [PR #65](https://github.com/fivetran/dbt_linkedin/pull/65) includes the following updates:
