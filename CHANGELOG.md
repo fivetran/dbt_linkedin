@@ -8,7 +8,7 @@
   - Values in these two models change after you upgrade if you union multiple connections. No full refresh is required.
 
 ## Under the Hood
-- Adds the `vertical_sum_monthly_geo_reports_by_source` integrity test and updates the country seed data so the country report is covered by the integration tests.
+- Updates the country seed data so the country report is covered by the integration tests.
 
 ## Contributors
 - [@porkedchop](https://github.com/porkedchop) ([Issue #66](https://github.com/fivetran/dbt_linkedin/issues/66), [PR #67](https://github.com/fivetran/dbt_linkedin/pull/67))
