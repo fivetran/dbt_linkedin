@@ -3,9 +3,12 @@
 [PR #68](https://github.com/fivetran/dbt_linkedin/pull/68) includes the following updates:
 
 ## Bug Fixes
-- Fixes the `geo` join in the `linkedin_ads__monthly_campaign_country_report` and `linkedin_ads__monthly_campaign_region_report` models. The join condition compared `report.source_relation` to itself, so it was always true. When you union multiple LinkedIn Ads connections, each report row matched the geo record from every connection. This multiplied `cost`, `clicks`, `impressions`, and conversion metrics by the number of connections. The join now matches `geo.source_relation` to `report.source_relation`.
+- Fixes inflated `cost`, `clicks`, `impressions`, and conversion metrics in the `linkedin_ads__monthly_campaign_country_report` and `linkedin_ads__monthly_campaign_region_report` models when you union multiple LinkedIn Ads connections. Each metric was multiplied by the number of connections.
   - Single-connection setups are not affected.
-  - Metrics in these two models change after you upgrade if you union multiple connections. No full refresh is required.
+  - Values in these two models change after you upgrade if you union multiple connections. No full refresh is required.
+
+## Under the Hood
+- Adds the `vertical_sum_monthly_geo_reports_by_source` integrity test and updates the country seed data so the country report is covered by the integration tests.
 
 ## Contributors
 - [@porkedchop](https://github.com/porkedchop) ([Issue #66](https://github.com/fivetran/dbt_linkedin/issues/66), [PR #67](https://github.com/fivetran/dbt_linkedin/pull/67))
