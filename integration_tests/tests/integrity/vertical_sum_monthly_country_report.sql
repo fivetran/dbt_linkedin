@@ -1,6 +1,6 @@
 {{ config(
     tags="fivetran_validations",
-    enabled=var('fivetran_validation_tests_enabled', false) and fivetran_utils.enabled_vars(['ad_reporting__linkedin_ads_enabled','linkedin_ads__using_geo','linkedin_ads__using_monthly_ad_analytics_by_member_country'])
+    enabled=var('fivetran_validation_tests_enabled', false) and (var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_geo', true) and var('linkedin_ads__using_monthly_ad_analytics_by_member_country', true))
 ) }}
 
 with staging as (

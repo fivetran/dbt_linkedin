@@ -1,4 +1,4 @@
-{{ config(enabled=fivetran_utils.enabled_vars(['ad_reporting__linkedin_ads_enabled','linkedin_ads__using_geo'])) }}
+{{ config(enabled=(var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_geo', true))) }}
 
 with base as (
 

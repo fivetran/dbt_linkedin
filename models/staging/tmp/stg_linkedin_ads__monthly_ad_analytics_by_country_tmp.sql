@@ -1,4 +1,4 @@
-{{ config(enabled=fivetran_utils.enabled_vars(['ad_reporting__linkedin_ads_enabled','linkedin_ads__using_monthly_ad_analytics_by_member_country'])) }}
+{{ config(enabled=(var('ad_reporting__linkedin_ads_enabled', true) and var('linkedin_ads__using_monthly_ad_analytics_by_member_country', true))) }}
 
 {% if var('linkedin_ads_union_schemas', []) | length > 0 or var('linkedin_ads_union_databases', []) | length > 0 %}
 
