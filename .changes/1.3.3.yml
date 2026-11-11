@@ -1,4 +1,5 @@
 version: 1.3.3
+pr_number: 70
 under_the_hood:
 - description: Replaces the `linkedin_ads_extract_url_parameter` macro with `dbt_utils.get_url_parameter` and
     removes `linkedin_ads_extract_url_parameter`. `dbt_utils.get_url_parameter` now includes the
