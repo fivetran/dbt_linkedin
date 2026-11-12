@@ -4,6 +4,13 @@ models:
 
   - name: stg_linkedin_ads__ad_analytics_by_creative
     description: Each record in this table represents the daily performance of ads at the creative level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - creative_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -38,6 +45,13 @@ models:
 
   - name: stg_linkedin_ads__ad_analytics_by_campaign
     description: Each record in this table represents the daily performance of ads at the campaign level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - campaign_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -133,6 +147,13 @@ models:
 
   - name: stg_linkedin_ads__campaign_history
     description: Each record represents a 'version' of a campaign.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - campaign_id
+              - version_tag
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -251,6 +272,13 @@ models:
 
   - name: stg_linkedin_ads__campaign_group_history
     description: Each record represents a 'version' of a campaign group.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - campaign_group_id
+              - last_modified_at
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -299,6 +327,13 @@ models:
 
   - name: stg_linkedin_ads__account_history
     description: Each record represents a 'version' of an account. 
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - account_id
+              - version_tag
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -343,6 +378,12 @@ models:
 
   - name: stg_linkedin_ads__geo
     description: Contains geographic data for LinkedIn Ads, including IDs and names of locations.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - geo_id
     columns:
       - name: geo_id
         description: Unique identifier for the geographic entity, used for joins in reporting tables.
@@ -355,6 +396,14 @@ models:
 
   - name: stg_linkedin_ads__monthly_ad_analytics_by_country
     description: Monthly LinkedIn Ads performance metrics aggregated by member country and campaign.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_month
+              - campaign_id
+              - member_country_geo_id
     columns:
       - name: campaign_id
         description: Identifier of the LinkedIn Ads campaign.
@@ -381,6 +430,14 @@ models:
 
   - name: stg_linkedin_ads__monthly_ad_analytics_by_region
     description: Monthly LinkedIn Ads performance metrics aggregated by member region and campaign.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_month
+              - campaign_id
+              - member_region_geo_id
     columns:
       - name: campaign_id
         description: Identifier of the LinkedIn Ads campaign.
