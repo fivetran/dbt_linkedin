@@ -86,6 +86,13 @@ models:
 
   - name: stg_linkedin_ads__creative_history
     description: Each record represents a 'version' of a creative.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - creative_id
+              - last_modified_at
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
