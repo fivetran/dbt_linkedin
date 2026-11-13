@@ -4,6 +4,13 @@ models:
 
   - name: linkedin_ads__account_report
     description: Each record in this table represents the daily performance of ads at the account level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -69,6 +76,15 @@ models:
 
   - name: linkedin_ads__campaign_report
     description: Each record in this table represents the daily performance of ads at the campaign level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_group_id
+              - campaign_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -228,6 +244,14 @@ models:
 
   - name: linkedin_ads__campaign_group_report
     description: Each record in this table represents the daily performance of ads at the campaign group level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -303,6 +327,16 @@ models:
 
   - name: linkedin_ads__creative_report
     description: Each record in this table represents the daily performance of ads at the creative level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_group_id
+              - campaign_id
+              - creative_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -403,6 +437,19 @@ models:
 
   - name: linkedin_ads__url_report
     description: Each record in this table represents the daily performance of ads at the url level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_group_id
+              - campaign_id
+              - creative_id
+          config:
+            # Don't run this test if you allow URLs to have null entries
+            enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -496,6 +543,16 @@ models:
 
   - name: linkedin_ads__monthly_campaign_country_report
     description: Each record in this table represents the monthly performance of a campaign at the country level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_month
+              - account_id
+              - campaign_group_id
+              - campaign_id
+              - country_name
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -658,6 +715,16 @@ models:
 
   - name: linkedin_ads__monthly_campaign_region_report
     description: Each record in this table represents the monthly performance of a campaign at the country level.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_month
+              - account_id
+              - campaign_group_id
+              - campaign_id
+              - region_name
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
