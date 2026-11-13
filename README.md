@@ -15,7 +15,7 @@ This dbt package transforms data from Fivetran's Linkedin connector into analyti
   - [DAG](https://fivetran.github.io/dbt_linkedin/#!/overview?g_v=1)
   - [Changelog](https://github.com/fivetran/dbt_linkedin/blob/main/CHANGELOG.md)
 - dbt Core™ supported versions
-  - `>=1.3.0, <3.0.0`
+  - `>=1.10.0, <3.0.0`
 
 ## What does this dbt package do?
 This package enables you to better understand the performance of your ads across varying grains and materializes output models designed to work simultaneously with our multi-platform Ad Reporting package. It creates enriched models with metrics focused on account, campaign, campaign group, creative, and utm/url level reports.
@@ -75,7 +75,7 @@ Include the following Linkedin Ads package version in your `packages.yml` file:
 # packages.yml
 packages:
   - package: fivetran/linkedin
-    version: [">=1.3.0", "<1.4.0"]
+    version: [">=1.4.0", "<1.5.0"]
 ```
 
 > All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/linkedin_source` in your `packages.yml` since this package has been deprecated.
