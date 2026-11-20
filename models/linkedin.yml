@@ -20,12 +20,12 @@ models:
 
       - name: account_id
         description: Unique internal ID representing the account.
-        tests:
+        data_tests:
           - not_null
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -97,7 +97,7 @@ models:
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -120,7 +120,7 @@ models:
 
       - name: campaign_id
         description: Unique internal ID representing the campaign.
-        tests:
+        data_tests:
           - not_null
 
       - name: campaign_group_status
@@ -264,7 +264,7 @@ models:
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -281,7 +281,7 @@ models:
 
       - name: campaign_group_id
         description: Unique internal ID representing the campaign group.
-        tests:
+        data_tests:
           - not_null
 
       - name: last_modified_at
@@ -349,7 +349,7 @@ models:
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -375,7 +375,7 @@ models:
 
       - name: creative_id
         description: Unique internal ID representing the creative.
-        tests:
+        data_tests:
           - not_null
 
       - name: last_modified_at
@@ -462,7 +462,7 @@ models:
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -482,12 +482,12 @@ models:
 
       - name: creative_id
         description: Unique internal ID representing the creative.
-        tests:
+        data_tests:
           - not_null
 
       - name: click_uri
         description: The URL where the member should be redirected to, on clicking the text ad or spotlight ad.
-        tests:
+        data_tests:
           - not_null:
               config:
                 # Below is so we don't run this test if the user has allowed urls to have null entries
@@ -565,7 +565,7 @@ models:
 
       - name: date_month
         description: The month of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: country_name
@@ -591,7 +591,7 @@ models:
 
       - name: campaign_id
         description: Unique internal ID representing the campaign.
-        tests:
+        data_tests:
           - not_null
 
       - name: campaign_group_status
@@ -737,7 +737,7 @@ models:
 
       - name: date_month
         description: The month of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: region_name
@@ -763,7 +763,7 @@ models:
 
       - name: campaign_id
         description: Unique internal ID representing the campaign.
-        tests:
+        data_tests:
           - not_null
 
       - name: campaign_group_status

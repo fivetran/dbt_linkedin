@@ -17,12 +17,12 @@ models:
 
       - name: creative_id
         description: The ID of the related creative.
-        tests:
+        data_tests:
           - not_null
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -58,12 +58,12 @@ models:
 
       - name: campaign_id
         description: The ID of the related creative.
-        tests:
+        data_tests:
           - not_null
 
       - name: date_day
         description: The day of the activity.
-        tests:
+        data_tests:
           - not_null
 
       - name: clicks
@@ -99,7 +99,7 @@ models:
 
       - name: creative_id
         description: Unique internal ID representing the creative.
-        tests:
+        data_tests:
           - not_null
 
       - name: last_modified_at
@@ -167,7 +167,7 @@ models:
 
       - name: campaign_id
         description: Unique internal ID representing the campaign.
-        tests:
+        data_tests:
           - not_null
 
       - name: last_modified_at
@@ -187,7 +187,7 @@ models:
 
       - name: version_tag
         description: An integer representation of the version of the campaign.
-        tests:
+        data_tests:
           - not_null
 
       - name: is_audience_expansion_enabled
@@ -292,12 +292,12 @@ models:
 
       - name: campaign_group_id
         description: Unique internal ID representing the campaign group.
-        tests:
+        data_tests:
           - not_null
 
       - name: last_modified_at
         description: The timestamp of when the version was updated.
-        tests:
+        data_tests:
           - not_null
           
       - name: account_id
@@ -347,7 +347,7 @@ models:
 
       - name: account_id
         description: Unique internal ID representing the account.
-        tests:
+        data_tests:
           - not_null
 
       - name: last_modified_at
@@ -364,7 +364,7 @@ models:
 
       - name: version_tag
         description: An integer representation of the version of the account.
-        tests:
+        data_tests:
           - not_null
 
       - name: status
@@ -394,7 +394,7 @@ models:
     columns:
       - name: geo_id
         description: Unique identifier for the geographic entity, used for joins in reporting tables.
-        tests: 
+        data_tests: 
           - not_null
       - name: value
         description: Name of the geographic entity.
@@ -416,7 +416,7 @@ models:
         description: Identifier of the LinkedIn Ads campaign.
       - name: date_month
         description: Month of the reporting data, aliased as `date_month`.
-        tests: 
+        data_tests: 
           - not_null
       - name: clicks
         description: The count of chargeable clicks.
@@ -450,7 +450,7 @@ models:
         description: Identifier of the LinkedIn Ads campaign.
       - name: date_month
         description: Month of the reporting data.
-        tests: 
+        data_tests: 
           - not_null
       - name: clicks
         description: The count of chargeable clicks.
