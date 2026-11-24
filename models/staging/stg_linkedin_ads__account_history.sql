@@ -5,7 +5,7 @@ with base as (
     select *
     from {{ ref('stg_linkedin_ads__account_history_tmp') }}
 
-), macro as (
+), staging_fields as (
 
     select
         {{
@@ -33,7 +33,7 @@ with base as (
         cast(created_time as {{ dbt.type_timestamp() }}) as created_at,
         row_number() over (partition by id {{ fivetran_utils.partition_by_source_relation(package_name='linkedin_ads') }} order by last_modified_time desc) = 1 as is_latest_version
 
-    from macro
+    from staging_fields
 
 )
 

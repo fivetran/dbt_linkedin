@@ -6,7 +6,7 @@ with base as (
     from {{ ref('stg_linkedin_ads__geo_tmp') }}
 ),
 
-macro as (
+staging_fields as (
 
     select
         {{
@@ -27,7 +27,7 @@ fields as (
         source_relation,
         id as geo_id,
         value
-    from macro
+    from staging_fields
 )
 
 select *
