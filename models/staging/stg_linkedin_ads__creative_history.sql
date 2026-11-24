@@ -5,7 +5,7 @@ with base as (
     select *
     from {{ ref('stg_linkedin_ads__creative_history_tmp') }}
 
-), macro as (
+), staging_fields as (
 
     select 
         {{
@@ -34,7 +34,7 @@ with base as (
             else cast(null as {{ dbt.type_string() }})
         end as click_uri_type
 
-    from macro
+    from staging_fields
 
 ), url_fields as (
 

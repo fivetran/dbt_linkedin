@@ -7,7 +7,7 @@ with base as (
     from {{ ref('stg_linkedin_ads__monthly_ad_analytics_by_country_tmp') }}
 ),
 
-macro as (
+staging_fields as (
 
     select
         {{
@@ -45,7 +45,7 @@ fields as (
 
         {{ linkedin_ads_fill_pass_through_columns(pass_through_fields=var('linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics')) }}
 
-    from macro
+    from staging_fields
 )
 
 select *

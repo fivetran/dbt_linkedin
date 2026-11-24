@@ -5,7 +5,7 @@ with base as (
     select *
     from {{ ref('stg_linkedin_ads__ad_analytics_by_creative_tmp') }}
 
-), macro as (
+), staging_fields as (
 
     select
         {{
@@ -41,7 +41,7 @@ with base as (
 
         {{ linkedin_ads_fill_pass_through_columns(pass_through_fields=var('linkedin_ads__creative_passthrough_metrics'), except=(var('linkedin_ads__conversion_fields') + ['conversion_value_in_local_currency'])) }}
 
-    from macro
+    from staging_fields
 
 )
 
