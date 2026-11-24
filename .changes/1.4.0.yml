@@ -6,5 +6,7 @@ new_features:
 - description: Adds `dbt_utils.unique_combination_of_columns` tests to staging and
     end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_linkedin/issues/new/choose).
 bug_fixes:
-- description: Renames the `macro` CTE to `staging_fields` in the staging models. `macro` is a reserved word that failed to parse under dbt v2 strict static analysis on DuckDB.
+- description: Renames the `macro` CTE to `staging_fields` in the staging models.
+    `macro` is a reserved word that failed to parse under dbt v2 strict static analysis
+    on DuckDB.
 date: '2026-11-18'

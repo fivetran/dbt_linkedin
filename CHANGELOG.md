@@ -6,6 +6,9 @@
 - **Breaking change**: Raises the minimum dbt version to 1.10.0.
 - Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_linkedin/issues/new/choose).
 
+## Bug Fix
+- Renames the `macro` CTE to `staging_fields` in the staging models. `macro` is a reserved word that failed to parse under dbt v2 strict static analysis on DuckDB.
+
 # dbt_linkedin v1.3.2
 
 [PR #68](https://github.com/fivetran/dbt_linkedin/pull/68) includes the following updates:
